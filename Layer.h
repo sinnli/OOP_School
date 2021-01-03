@@ -4,5 +4,9 @@
 
 #ifndef UNTITLED_LAYER_H
 #define UNTITLED_LAYER_H
+class Layer:{
+    char* nameLayer;
+public:
+};
 
 #endif //UNTITLED_LAYER_H

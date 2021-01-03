@@ -4,5 +4,9 @@
 
 #ifndef UNTITLED_SCHOOL_H
 #define UNTITLED_SCHOOL_H
+class School:{
+    int numOfLayers;
+
+};
 
 #endif //UNTITLED_SCHOOL_H
