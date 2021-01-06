@@ -6,6 +6,7 @@
 #define UNTITLED_CLASS_H
 #include "Pupil.h"
 #include <vector>
+#include "Teacher.h"
 using namespace std;
 
 class Class {
@@ -13,14 +14,15 @@ class Class {
     int numOfClass;
     vector<Pupil*> PoinToStuInClass; //use of composition
     int numStudClass;
-    //Teacher* educator; //use of conposition
+    Teacher* educator; //use of conposition
 public:
     Class();
+    Class(char nameLayer, int numClass,vector<Pupil*> PointToStud, int numStudInClass, Teacher* educator);
     ~Class();
 
     //operator +=
     //operator []
-    Pupil &operator[]( int i );
+    Pupil &operator[]( int i )const;
 
 
 };

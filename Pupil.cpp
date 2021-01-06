@@ -8,6 +8,7 @@
 using namespace std;
 
 Pupil::Pupil(){
+    this->arrayGrades;
 }
 
 void Pupil::printStudent(){

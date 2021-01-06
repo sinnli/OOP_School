@@ -9,7 +9,9 @@ Worker::Worker(string frt_name, string lst_name, double exp_time):Person(frt_nam
 	this->exp_time = exp_time;
 	this->basis = 25; 
 }
-
+Worker::~Worker() {
+    cout<<"deleting Worker"<<endl;
+}
 
 double Worker::Get_Exp_Time() {
 	return this->exp_time;
