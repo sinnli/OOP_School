@@ -4,12 +4,24 @@
 
 #ifndef UNTITLED_CLASS_H
 #define UNTITLED_CLASS_H
+#include "Pupil.h"
+#include <vector>
+using namespace std;
 
-class Class: {
+class Class {
     char nameOfLayer;
     int numOfClass;
-    char[] arrayPoinToStuInClass;
+    vector<Pupil*> PoinToStuInClass; //use of composition
     int numStudClass;
+    //Teacher* educator; //use of conposition
+public:
+    Class();
+    ~Class();
+
+    //operator +=
+    //operator []
+    Pupil &operator[]( int i );
+
 
 };
 

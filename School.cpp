@@ -3,3 +3,4 @@
 //
 
 #include "School.h"
+using namespace std;

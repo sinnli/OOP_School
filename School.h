@@ -4,7 +4,11 @@
 
 #ifndef UNTITLED_SCHOOL_H
 #define UNTITLED_SCHOOL_H
-class School:{
+
+#include <vector>
+using namespace std;
+
+class School{
     int numOfLayers;
 
 };
