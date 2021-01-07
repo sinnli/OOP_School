@@ -6,6 +6,7 @@
 #define UNTITLED_SCHOOL_H
 
 #include <vector>
+#include <iostream>
 using namespace std;
 class Layer; //declaring the class here and including in cpp file
 class Pupil;
@@ -17,11 +18,14 @@ class School{
     vector<Pupil*> PointPupil;
     vector<Worker*> PointWorker;
     static School* oneSchool;//must be private
-    School(); //must be private
+    School(int numLayer, vector<Layer*> layer, vector<Pupil*> pupil,vector<Worker*> worker); //must be private
+    School();
+    School(const School&);//private copy ctor
+    School& operator=(const School&);//private assigment operator
 protected:
 public:
     ~School();
-    static int theOneSchool();
+    static School& theOneSchool(); //single School is being created
     void menu(); //prints out the managment menu of the school
 };
 

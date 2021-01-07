@@ -10,10 +10,14 @@ ID: 7654321
 
 #include <string.h>
 #include <vector>
+#include <cstring>
+#include "Person.h"
 #include "Class.h"
+#include <iostream>
 using namespace std;
 
 class Person;
+class Class;
 
 class Pupil : public Person {
     vector<int> arrayGrades;//i dont know how many grades

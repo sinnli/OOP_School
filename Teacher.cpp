@@ -1,18 +1,21 @@
 #include "Teacher.h"
-
+#include "Worker.h"
+#include "Person.h"
 
 
 //Teacher::Teacher() : study_subjects{ "None" }, num_subj (0) {}
 
-Teacher::Teacher(string frt_name, string lst_name, string study_sbj[15], int num_subj, double tch_exp_time):Worker(frt_name,lst_name,tch_exp_time) {
-	
-	//this->first_name = frt_name;
-	//this->last_name = lst_name;
-	this->num_subj = num_subj;
-	
-	for (int i = 0; i < num_subj; i++) {
-		this->study_subjects[i] = study_sbj[i];
-	}
+
+Teacher::Teacher( std::string frt_name,  std::string lst_name, string *study_sbj, int num_subj,
+                 double tch_exp_time) : Worker(frt_name,lst_name,tch_exp_time)
+                 {
+    this->first_name = frt_name;
+    this->last_name = lst_name;
+    this->num_subj = num_subj;
+
+    for (int i = 0; i < num_subj; i++) {
+        this->study_subjects[i] = study_sbj[i];
+
 }
 
 double Teacher::Get_Sallary() {      // return the monthly sallary of the teacher 
@@ -57,6 +60,9 @@ void Teacher::Print_Details() {
 	else {
 		std::cout << " No " << endl;
 	}
+}
+Teacher::~Teacher() {
+    cout<<"deleting Teacher"<<endl;
 }
 
 

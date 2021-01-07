@@ -5,10 +5,12 @@
 #ifndef UNTITLED_CLASS_H
 #define UNTITLED_CLASS_H
 #include <vector>
-#include "Teacher.h"
-//#include <memory>
+#include <iostream>
 using namespace std;
+
+
 class Pupil;
+class Teacher;
 
 class Class {
     char nameOfLayer;

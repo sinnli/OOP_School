@@ -14,6 +14,7 @@ Pupil::Pupil(){ //default c-tor
     this->numClass;
     this->pupilClass;
 }
+
 Pupil::Pupil(string frt_name , string lst_name ,char letterLayer, int numClass, vector<int> Grades, Class pupilClass) :
 Person(frt_name, lst_name)
 {
@@ -76,10 +77,10 @@ int main(){
     string L_n = "Levi";
     string F_n1 = "Israeli";
     string L_n1 = "Levli";
-    string sub[] = {"eng","math"};
+    string sub[15] = {"a"};
     vector<int> gra = {100,75,90,100},gr1 = {56,100,100,100};
     vector<Pupil*> Ppupil;
-    Teacher t1(F_n1,L_n1,sub,2,12.30);
+  /*  Teacher t1  = Teacher(F_n1,L_n1,sub,15,12.30);
     Teacher *Pt1;
     Pt1 = &t1;
     Class C1('a',0,Ppupil,30,Pt1);
@@ -97,6 +98,6 @@ int main(){
     C1[0].Print_Details();
     C1[1].Print_Details();
 
-
+*/
     return 0;
 }

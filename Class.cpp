@@ -3,6 +3,7 @@
 //
 #include "Pupil.h"
 #include "Class.h"
+#include "Teacher.h"
 #include <cstdlib>
 #include <iostream>
 

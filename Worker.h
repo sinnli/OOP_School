@@ -1,4 +1,16 @@
+
+
+
+#ifndef WORKER_H
+#define WORKER_H
+
 #include "Person.h"
+#include <string.h>
+#include <vector>
+#include <cstring>
+#include <iostream>
+using namespace std;
+
 
 class Worker : public Person {
 
@@ -20,3 +32,4 @@ public:
 
 };
 
+#endif
