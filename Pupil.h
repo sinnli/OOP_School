@@ -8,6 +8,7 @@ ID: 7654321
 #ifndef UNTITLED_PUPIL_H
 #define UNTITLED_PUPIL_H
 
+#include <string.h>
 #include <vector>
 #include "Class.h"
 using namespace std;
@@ -16,19 +17,19 @@ class Person;
 
 class Pupil : public Person {
     vector<int> arrayGrades;//i dont know how many grades
-    char* nameLayer;
+    char nameLayer;
     int numClass;
     Class pupilClass; //use of composition
 protected:
 
 public:
     Pupil();//default c-tor
-    Pupil(char* nameLayer,int numClass,vector<int> Grades,Class pupilClass);
+    Pupil(string frt_name , string lst_name ,char letterLayer,int numClass,vector<int> Grades,Class pupilClass);
     ~Pupil();
-    //getter/setter
+
     double gradeaverage(); //how excact this average should be ?
-    bool topStudent(); //average over 85, no subject under 65
-    void printStudent();
+    virtual void Print_Details();
+    virtual bool Top_Person() ;//average over 85, no subject under 65
 };
 
 #endif //UNTITLED_PUPIL_H

@@ -12,7 +12,11 @@ Layer::Layer() { //default c-tor
     this->classesOfLayerPointer;//empty Vector
 }
 
-Layer::Layer(char *nameLayer, const vector<Class *> classesInLayer) {
+Layer::Layer(char nameLayer, const vector<Class *> classesInLayer) {
+    if ((nameLayer>'f')||(nameLayer<'a')){
+        //no such name for layer possible
+        exit(0);
+    }
     this->nameLayer = nameLayer;
     this->classesOfLayerPointer = classesInLayer;
 }

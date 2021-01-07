@@ -14,15 +14,16 @@ Pupil::Pupil(){ //default c-tor
     this->numClass;
     this->pupilClass;
 }
-Pupil::Pupil(char *nameLayer, int numClass, vector<int> Grades, Class pupilClass)
+Pupil::Pupil(string frt_name , string lst_name ,char letterLayer, int numClass, vector<int> Grades, Class pupilClass) :
+Person(frt_name, lst_name)
 {
-    this->nameLayer = nameLayer;
+    this->nameLayer = letterLayer;
     this->arrayGrades = Grades;
     this->numClass = numClass;
     this->pupilClass = pupilClass;
 }
 
-void Pupil::printStudent(){
+void Pupil::Print_Details(){
     /*
      * prints details of student
      * also grades, average
@@ -36,7 +37,7 @@ void Pupil::printStudent(){
     }
     cout<<endl;
     cout<<"In class "<< this->nameLayer<<this->numClass<<"."<<endl;
-    if (this->topStudent()== true){
+    if (this->Top_Person()== true){
         cout<<"The student is a top student."<<endl;
     }
     else{
@@ -52,7 +53,7 @@ double Pupil::gradeaverage() { //how exact this number should be ?
     }
     return (sum/n);
 }
-bool Pupil::topStudent() {
+bool Pupil::Top_Person() {
     int flag_1gradeUnder65=0;
     for (int j=0;j<this->arrayGrades.size();j++){
         if(this->arrayGrades[j]<65){
@@ -71,6 +72,31 @@ Pupil::~Pupil() {
 }
 
 int main(){
+    string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
+    string L_n = "Levi";
+    string F_n1 = "Israeli";
+    string L_n1 = "Levli";
+    string sub[] = {"eng","math"};
+    vector<int> gra = {100,75,90,100},gr1 = {56,100,100,100};
+    vector<Pupil*> Ppupil;
+    Teacher t1(F_n1,L_n1,sub,2,12.30);
+    Teacher *Pt1;
+    Pt1 = &t1;
+    Class C1('a',0,Ppupil,30,Pt1);
+    Pupil p2 = Pupil(f2,f3,'a',1,gr1,C1);
+    Pupil p1= Pupil(F_n,L_n,'a',1,gra,C1);
+    p1.Top_Person();
+    p1.gradeaverage();
+    //p1.Print_Details();
+    //p2.Print_Details();
+    Pupil *Pp1,*Pp2;
+    Pp1 = &p1;
+    Pp2 = &p2;
+    C1 += Pp1;
+    C1 += Pp2;
+    C1[0].Print_Details();
+    C1[1].Print_Details();
+
 
     return 0;
 }
