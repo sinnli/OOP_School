@@ -17,10 +17,8 @@ class Layer{
 public:
     Layer();
     ~Layer();
-    //copy ctor
-    //what is the 4 present of compiler ?
-    //operator []
-    Class* &operator[]( int i );
+    Class &operator[]( int i )const; //getting class at given index of the vector
+
 };
 
 #endif //UNTITLED_LAYER_H

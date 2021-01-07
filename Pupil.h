@@ -9,6 +9,7 @@ ID: 7654321
 #define UNTITLED_PUPIL_H
 
 #include <vector>
+#include "Person.h"
 using namespace std;
 
 class Pupil{ //:public People{

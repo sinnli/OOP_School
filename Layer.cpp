@@ -10,17 +10,14 @@ Layer::Layer() {
     Class* testclass;
     //this->nameLayer = 'a';
     this->classesOfLayerPointer.push_back(testclass);
+}
 
-}
-/*Class Layer&::operator[]( int i )  {
-    if (0<=i<=2){
-        if((0<=i<= this->classesOfLayerPointer.size())){
-            // index is in vector
-            return &(this->classesOfLayerPointer[i]); //returns the Class in given index of the array.
-        }
+Pupil & Class ::operator[]( int i )const
+{
+    if ((i >= this->PoinToStuInClass.size())||(i<0)) {
+        //Vector index out of bound, exiting.
+        cout<< "No Student at given index."<<endl;
+        exit(0);
     }
-    //index in not in vector
-    cout<<"No such Class in layer";
-    return Class(); //returns default Class ->not sure here
+    return (*this->PoinToStuInClass[i]); //returns Pupil in given index
 }
- */

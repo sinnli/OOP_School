@@ -19,10 +19,9 @@ public:
     Class();
     Class(char nameLayer, int numClass,vector<Pupil*> PointToStud, int numStudInClass, Teacher* educator);
     ~Class();
-
+    Class& operator+=(Pupil* pupil);//adds stud to Vector of students
     //operator +=
-    //operator []
-    Pupil &operator[]( int i )const;
+    Pupil &operator[]( int i )const; //returns student at given index of Vector
 
 
 };
