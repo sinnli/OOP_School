@@ -4,10 +4,11 @@
 
 #ifndef UNTITLED_CLASS_H
 #define UNTITLED_CLASS_H
-#include "Pupil.h"
 #include <vector>
 #include "Teacher.h"
+//#include <memory>
 using namespace std;
+class Pupil;
 
 class Class {
     char nameOfLayer;
@@ -17,12 +18,10 @@ class Class {
     Teacher* educator; //use of conposition
 public:
     Class();
-    Class(char nameLayer, int numClass,vector<Pupil*> PointToStud, int numStudInClass, Teacher* educator);
+    Class(char nameLayer, int numClass,const vector<Pupil*> PointToStud, int numStudInClass, Teacher* educator);
     ~Class();
     Class& operator+=(Pupil* pupil);//adds stud to Vector of students
-    //operator +=
     Pupil &operator[]( int i )const; //returns student at given index of Vector
-
 
 };
 

@@ -5,9 +5,11 @@
 #ifndef UNTITLED_LAYER_H
 #define UNTITLED_LAYER_H
 
-#include "Class.h"
 #include <vector>
+//#include <memory>
 using namespace std;
+
+class Class;
 
 class Layer{
     char* nameLayer;
@@ -15,10 +17,10 @@ class Layer{
     //not sure if counts as Class**
     //the vector can at most 3 pointers
 public:
-    Layer();
+    Layer(); //default c-tor
+    Layer(char* nameLayer,const vector<Class*> classesInLayer);
     ~Layer();
     Class &operator[]( int i )const; //getting class at given index of the vector
-
 };
 
 #endif //UNTITLED_LAYER_H

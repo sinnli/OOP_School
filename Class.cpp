@@ -1,25 +1,29 @@
 //
 // Created by liel on 03/01/2021.
 //
-
+#include "Pupil.h"
 #include "Class.h"
 #include <cstdlib>
 #include <iostream>
+
 using namespace std;
 
-Class::Class(char nameLayer, int numClass, vector<Pupil *> PointToStud, int numStudInClass, Teacher *educator) {
+Class::Class(char nameLayer, int numClass, const vector<Pupil*> PointToStud, int numStudInClass,
+             Teacher *educator) {
     this->nameOfLayer = nameLayer;
     this->PoinToStuInClass = PointToStud;
     this->educator = educator;
     this->numOfClass = numClass;
     this->numStudClass = numStudInClass;
 }
+
+
 Class::Class() { //default ctor
-    this->nameOfLayer = 'a';
+    this->nameOfLayer;
     this->PoinToStuInClass; //is Null if empty
-    //this->educator = *Teacher(); ->is there a default c-tor for teacher?
-    this->numOfClass = 0;
-    this->numStudClass = 0;
+    this->educator;
+    this->numOfClass;
+    this->numStudClass;
 }
 Class::~Class() {
     //delete[] PoinToStuInClass; maybe later required
@@ -35,6 +39,8 @@ Pupil & Class ::operator[]( int i )const
     return (*this->PoinToStuInClass[i]); //returns Pupil in given index
 }
 Class& Class::operator+=(Pupil* pupil) {
-    this->PoinToStuInClass.push_back(pupil); //adding an student  in the end of the vector
+    //shared_ptr<Pupil> pPupil = make_shared<Pupil>();
+    this->PoinToStuInClass.push_back(pupil);
+    //adding an student  in the end of the vector
     return *this;
 }

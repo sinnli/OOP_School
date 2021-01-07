@@ -9,16 +9,21 @@ ID: 7654321
 #define UNTITLED_PUPIL_H
 
 #include <vector>
-#include "Person.h"
+#include "Class.h"
 using namespace std;
 
-class Pupil{ //:public People{
+class Person;
+
+class Pupil : public Person {
     vector<int> arrayGrades;//i dont know how many grades
-    //char* nameLayer;
-    //int numClass;
-    //Class pupilClass; //use of composition
+    char* nameLayer;
+    int numClass;
+    Class pupilClass; //use of composition
+protected:
+
 public:
-    Pupil();//can this ctor get arguments?
+    Pupil();//default c-tor
+    Pupil(char* nameLayer,int numClass,vector<int> Grades,Class pupilClass);
     ~Pupil();
     //getter/setter
     double gradeaverage(); //how excact this average should be ?
