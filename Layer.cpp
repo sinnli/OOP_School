@@ -34,3 +34,19 @@ Class & Layer ::operator[]( int i )const
 Layer::~Layer() {
     cout<<"deleting Layer"<<endl;
 }
+
+void Layer::setLayerVec(Class *PClass) {
+    if (lookForClass(PClass)){
+        this->classesOfLayerPointer.push_back(PClass); //adds only if does not exist
+    }
+    return;
+}
+
+bool Layer::lookForClass(Class* PClass){
+    for (int i=0; i<this->classesOfLayerPointer.size();i++){
+        if(this->classesOfLayerPointer[i]==PClass){
+            return true;
+        }
+    }
+    return false;
+}

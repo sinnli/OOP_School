@@ -12,16 +12,16 @@ Pupil::Pupil(){ //default c-tor
     this->arrayGrades; //empty Vector
     this->nameLayer; //default value
     this->numClass;
-    this->pupilClass;
+    //this->pupilClass;
 }
 
-Pupil::Pupil(string frt_name , string lst_name ,char letterLayer, int numClass, vector<int> Grades, Class pupilClass) :
+Pupil::Pupil(string frt_name , string lst_name ,char letterLayer, int numClass, vector<int> Grades) :
 Person(frt_name, lst_name)
 {
     this->nameLayer = letterLayer;
     this->arrayGrades = Grades;
     this->numClass = numClass;
-    this->pupilClass = pupilClass;
+    //this->pupilClass = pupilClass;
 }
 
 void Pupil::Print_Details(){

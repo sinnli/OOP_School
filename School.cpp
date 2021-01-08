@@ -50,40 +50,32 @@ void School::menu() {
         std::cout <<"Exit ->enter 10"<<endl;
         std::cin >> state;
         if (state == 1) {       // add new pupil
-            Pupil p;
-            //this->PointPupil.push_back(*)
+            Pupil* pnewP;
+            Pupil newP = creatingPupil();
+            pnewP = &newP;
+            this->PointPupil.push_back(pnewP);
         }
         if (state == 2) {    // delete client from data-base
-            char id_arr[10];
-            std::cout << "To delete client enter his id number: " << std::endl;
-            std::cin >> id_arr;
-            String id_to_remove(id_arr);
-            Client client_to_remove = data_base.GetClientid(id_to_remove);
-            data_base -= client_to_remove;
+
         }
         if (state == 3) {
-            cout << data_base << endl;      // cout << overloading // should print all clients details and the number of clients in data base//
 
         }
         if (state == 4) {          // return the mtching list for specific client//
-            char id_arr[10];
-            std::cout << "To find matches for a client enter his id number: " << std::endl;
-            std::cin >> id_arr;
-            String match_client(id_arr);
-            data_base.printsMatchingClient(match_client);
+
         }
-        if (state == 5) {                    // exit the menu
-            this->~Menu();       // check if needed
+        if (state == 10) {                    // exit the menu
+            this->~School();
             break;
         }
-        if ((state != 3) & (state != 4) & (state != 2) & (state != 1) & (state != 5)){
+        if ((0<state)&&(state<11)){
             std::cout << "Error:The Input given was incorrect" << std::endl;
-            mainMenu();
+            menu();
         }
     }
 }
 
-Pupil add_pupil(){
+Pupil School::creatingPupil(){
     cout<<"Please enter the first name of the student:"<<endl;
     string frs_name;
     cin>>frs_name; //verifying string is needed
@@ -100,12 +92,16 @@ Pupil add_pupil(){
     int numClass;
     cin>>numClass; //verifiyin required
     cin.ignore();
-    cout<<"Please enter the grades of the Student. (After each grade press enter. \n"
-          "As you finish please enter 101)\n"
+    cout<<"Please enter the grades of the Student. (After each grade press enter.) \n"
+          "To stop please enter any character.\n"
           "All the grades are between 0 and 100."<<endl;
     vector<int> grades;
     int grd;
-
-
-
+    while(cin>>grd){ //returns false for characters because grd is int
+        //verifying the input first
+        grades.push_back(grd);
+    }
+    Pupil newPupil = Pupil(frs_name,lst_name,letterLayer,numClass,grades);
+    return newPupil;
 }
+

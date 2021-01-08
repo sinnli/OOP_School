@@ -1,8 +1,0 @@
-//
-// Created by liel on 07/01/2021.
-//
-
-#ifndef UNTITLED_VECAMALYSER_T_H
-#define UNTITLED_VECAMALYSER_T_H
-
-#endif //UNTITLED_VECAMALYSER_T_H

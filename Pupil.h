@@ -23,12 +23,12 @@ class Pupil : public Person {
     vector<int> arrayGrades;//i dont know how many grades
     char nameLayer;
     int numClass;
-    Class pupilClass; //use of composition
+    //Class pupilClass; //use of composition
 protected:
 
 public:
     Pupil();//default c-tor
-    Pupil(string frt_name , string lst_name ,char letterLayer,int numClass,vector<int> Grades,Class pupilClass);
+    Pupil(string frt_name , string lst_name ,char letterLayer,int numClass,vector<int> Grades);
     ~Pupil();
 
     double gradeaverage(); //how excact this average should be ?

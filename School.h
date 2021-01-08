@@ -27,6 +27,7 @@ public:
     ~School();
     static School& theOneSchool(); //single School is being created
     void menu(); //prints out the managment menu of the school
+    Pupil creatingPupil();
 };
 
 #endif //UNTITLED_SCHOOL_H

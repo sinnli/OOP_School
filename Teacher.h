@@ -15,12 +15,12 @@ class Person;
 class Teacher: public Worker {
 
 private:
-    std::string study_subjects[15];      // top of 15 subjects foe each teacher
+    vector<string> study_sbj;      // subjects the teacher is teaching
     int num_subj;
 
 public:
     Teacher();
-    Teacher( std::string frt_name, std::string lst_name, string study_sbj[15], int num_subj,double tch_exp_time);
+    Teacher( std::string frt_name, std::string lst_name, vector<string> study_sbj, int num_subj,double tch_exp_time);
     double Get_Sallary();
     bool Top_Person();
     void Print_Subjects();
