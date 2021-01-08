@@ -11,7 +11,8 @@ using namespace std;
 class Layer; //declaring the class here and including in cpp file
 class Pupil;
 class Worker;
-
+class Layer;
+class Teacher;
 class School{
     int numOfLayers;
     vector<Layer*> PointLayers;
@@ -26,8 +27,10 @@ protected:
 public:
     ~School();
     static School& theOneSchool(); //single School is being created
-    void menu(); //prints out the managment menu of the school
+    void menu(); //prints out the management menu of the school
     Pupil creatingPupil();
+    bool lookForLayer(char letterLayer);
+    Teacher creatingTeacher();
 };
 
 #endif //UNTITLED_SCHOOL_H

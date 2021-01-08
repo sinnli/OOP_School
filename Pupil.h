@@ -34,6 +34,8 @@ public:
     double gradeaverage(); //how excact this average should be ?
     virtual void Print_Details();
     virtual bool Top_Person() ;//average over 85, no subject under 65
+    char getLayer()const;
+
 };
 
 #endif //UNTITLED_PUPIL_H

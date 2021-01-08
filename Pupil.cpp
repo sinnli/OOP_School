@@ -72,6 +72,10 @@ Pupil::~Pupil() {
     cout<< "deleting Pupil"<<endl;
 }
 
+char Pupil::getLayer()const {
+    return this->nameLayer; //returns char of layer the student is in
+}
+
 int main(){
     string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
     string L_n = "Levi";

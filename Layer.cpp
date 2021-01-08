@@ -50,3 +50,7 @@ bool Layer::lookForClass(Class* PClass){
     }
     return false;
 }
+
+char Layer::getLayer() {
+    return this->nameLayer;
+}

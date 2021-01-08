@@ -6,6 +6,8 @@
 #include "Worker.h"
 #include "Layer.h"
 #include "Pupil.h"
+#include "Layer.h"
+#include "Teacher.h"
 using namespace std;
 
 School* School::oneSchool = NULL; //the static pointer
@@ -53,7 +55,23 @@ void School::menu() {
             Pupil* pnewP;
             Pupil newP = creatingPupil();
             pnewP = &newP;
-            this->PointPupil.push_back(pnewP);
+            this->PointPupil.push_back(pnewP);//added to Pupil of school
+            //add to class
+            //add new layer if needed
+            char layerLet = newP.getLayer();
+            //returns true if layer exist in vector of layer
+            if (!this->lookForLayer(layerLet)){
+                //this layer does not exist yet
+                //add new class
+                //ask the user to add Teacher as educator
+                Teacher* pnewT;
+                Teacher newT = creatingTeacher();
+                pnewT = &newT;
+                //creating new Layer:
+                //Layer La = Layer(layerLet,)                   //Layer(char nameLayer,const vector<Class*> classesInLayer);
+                //add to layerVector of School
+            }
+
         }
         if (state == 2) {    // delete client from data-base
 
@@ -105,3 +123,36 @@ Pupil School::creatingPupil(){
     return newPupil;
 }
 
+bool School::lookForLayer(char letterLayer) {
+    for (int i=0; i<this->PointLayers.size();i++){
+        if(this->PointLayers[i]->getLayer()==letterLayer){
+            return true;
+        }
+    }
+    return false;
+}
+
+Teacher School::creatingTeacher() {
+    cout<<"Please enter the first name of the student:"<<endl;
+    string frs_name;
+    cin>>frs_name; //verifying string is needed
+    cin.ignore();
+    cout<<"Please enter the last name of the student:"<<endl;
+    string lst_name;
+    cin>>lst_name; //verifying string is needed
+    cin.ignore();
+    cout<<"Please enter in the subject the Teacher is teaching(at least one):\n"
+          "Finish by entering .."<<endl;
+    vector<string> study_sbj;
+    string subj;
+    while (cin>>subj){
+        study_sbj.push_back(subj);
+    }
+    cin.ignore();
+    cout<<"Please enter the teacher exp time:";
+    double tch_exp_time;
+    cin>>tch_exp_time;
+    Teacher newTeacher = Teacher(frs_name,lst_name,study_sbj,study_sbj.size(),tch_exp_time);
+    //Teacher( std::string frt_name, std::string lst_name, vector<string> study_sbj, int num_subj,double tch_exp_time);
+    return newTeacher;
+}
