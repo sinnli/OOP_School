@@ -14,7 +14,7 @@ class Person;
 
 class Teacher: public Worker {
 
-private:
+protected:
     vector<string> study_sbj;      // subjects the teacher is teaching
     int num_subj;
 

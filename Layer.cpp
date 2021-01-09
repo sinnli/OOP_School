@@ -50,6 +50,24 @@ bool Layer::lookForClass(Class* PClass){
     }
     return false;
 }
+//maybe no need
+bool Layer::lookForClass(int classNum){
+    for (int i=0; i<this->classesOfLayerPointer.size();i++){
+        if(this->classesOfLayerPointer[i]->Get_numOfClass()==classNum){
+            return true;
+        }
+    }
+    return false;
+}
+
+Class* Layer::getClass(int classNum){
+    for (int i=0; i< this->classesOfLayerPointer.size();i++){
+        if (this->classesOfLayerPointer[i]->Get_numOfClass()==classNum){
+            return this->classesOfLayerPointer[i];
+        }
+    }
+    return  NULL;
+}
 
 char Layer::getLayer() {
     return this->nameLayer;

@@ -3,14 +3,14 @@
 //
 #include "Pupil.h"
 #include "Class.h"
-#include "Teacher.h"
+#include "Tutor.h"
 #include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
 Class::Class(char nameLayer, int numClass, const vector<Pupil*> PointToStud, int numStudInClass,
-             Teacher *educator) {
+             Tutor *educator) {
     this->nameOfLayer = nameLayer;
     this->PoinToStuInClass = PointToStud;
     this->educator = educator;
@@ -45,3 +45,41 @@ Class& Class::operator+=(Pupil* pupil) {
     //adding an student  in the end of the vector
     return *this;
 }
+int Class::Get_numStudClass() {
+    return this->numStudClass;
+}
+
+bool Class::Top_Class() {     // top class if more than 50% are top students
+
+    int cntr = 0;
+    for (int i = 0; i < this->numStudClass; i++) {
+        if (this->PoinToStuInClass[i]->Pupil::Top_Person() == true) {       // if (this->PoinToStuInClass[i]->Top_Person() == true)
+            cntr++;
+        }
+    }
+    if ((cntr / this->numStudClass) * 100 > 50) {
+        return true;
+    }
+    return false;
+}
+
+int Class::Get_numOfClass() {
+    return this->numOfClass;
+}
+
+char Class::Get_nameOfLayer() {
+    return this->nameOfLayer;
+}
+
+void Class::Print_Students() {
+
+    for (int i = 0; i < this->numStudClass; i++) {
+        std::cout << "Students in the class are: " << endl;
+        this->PoinToStuInClass[i]->Print_Details();
+    }
+}
+void Class::plusOne_numStudClass() {
+    this->numStudClass = this->numStudClass+1;
+    return;
+}
+

@@ -13,8 +13,13 @@ class Pupil;
 class Worker;
 class Layer;
 class Teacher;
+class Class;
+class Tutor;
+class Secretary;
+
 class School{
-    int numOfLayers;
+    int numOfLayers = 0;
+    int numOFManager = 0;
     vector<Layer*> PointLayers;
     vector<Pupil*> PointPupil;
     vector<Worker*> PointWorker;
@@ -28,9 +33,16 @@ public:
     ~School();
     static School& theOneSchool(); //single School is being created
     void menu(); //prints out the management menu of the school
+    int lookForLayer(char letterLayer);
+    void newLayerAdd(Pupil* pnewP, char layerLet);
+    Class* newClassAdd(Pupil *pnewP,char layerLet);
+    Tutor* creatingTutor();
     Pupil creatingPupil();
-    bool lookForLayer(char letterLayer);
-    Teacher creatingTeacher();
+    Teacher* creatingTeacher();
+    Secretary* creatingSecretary();
+
+    //creatingManager(); //use int num of Manager
+
 };
 
 #endif //UNTITLED_SCHOOL_H

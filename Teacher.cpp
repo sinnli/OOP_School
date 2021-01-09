@@ -3,7 +3,10 @@
 #include "Person.h"
 
 
-//Teacher::Teacher() : study_subjects{ "None" }, num_subj (0) {}
+Teacher::Teacher(){
+    this->study_sbj;
+    this->num_subj = 0;
+}
 
 
 Teacher::Teacher( std::string frt_name,  std::string lst_name, vector<string> study_sbj, int num_subj,

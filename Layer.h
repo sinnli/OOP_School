@@ -22,8 +22,10 @@ public:
     ~Layer();
     Class &operator[]( int i )const; //getting class at given index of the vector
     void setLayerVec(Class* PClass); //adds class to layer
-    bool lookForClass(Class* PClass); //looks for class in vector
+    bool lookForClass(Class* PClass); //looks for class in vector by given class*
+    bool lookForClass(int classNum); //looks for class in vector by given classnum
     char getLayer();
+    Class* getClass(int classNum);
 };
 
 #endif //UNTITLED_LAYER_H
