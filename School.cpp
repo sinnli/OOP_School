@@ -96,10 +96,36 @@ void School::menu() {
             creatingTutor(); //is also added to workers pointer vector of school
         }
         if (state == 4) {          // adds manager
-            creatingSecretary();
-        }
-        if (state == 5){ //adds new secretary
 
+        }
+        if (state == 5) { //adds new secretary
+            creatingSecretary(); //is also added to workers pointer vector of school
+        }
+        if (state == 6){//prints person details
+            cout<<"All people at school with their details:"<<endl;
+            cout<<"The Pupil at the school with their details:"<<endl;
+            for(int i = 0;i<this->PointPupil.size();i++){
+                this->PointPupil[i]->Print_Details();
+            }
+            cout<<"The Workers at the school with their details:"<<endl;
+            for(int i = 0;i<this->PointWorker.size();i++){
+                this->PointWorker[i]->Print_Details();
+            }
+        }
+        if (state == 7){ //prints out standing people
+            cout<<"All outstanding peple at school:"<<endl;
+            cout<<"Top studenst:"<<endl;
+            for (int i = 0;i<this->PointPupil.size();i++){
+                if (this->PointPupil[i]->Top_Person()){
+                    this->PointPupil[i]->Print_Details();
+                }
+            }
+            cout<<"Top workers:"<<endl;
+            for (int i = 0;i<this->PointWorker.size();i++){
+                if (this->PointWorker[i]->Top_Person()){
+                    this->PointWorker[i]->Print_Details();
+                }
+            }
         }
         if (state == 10) {                    // exit the menu
             this->~School();
@@ -225,10 +251,10 @@ Tutor* School::creatingTutor() {
     //add the class also to layer(of the tutor )? if the class is new created
 
     //add the tutor to Workers of school
-    this->PointWorker.push_back(&newTu);
+    this->PointWorker.push_back(pnewTu);
     return pnewTu;
 }
-/*Secretary* School::creatingSecretary() {
+Secretary* School::creatingSecretary() {
     cout<<"Please enter the first name of the student:"<<endl;
     string frs_name;
     cin>>frs_name; //verifying string is needed
@@ -239,9 +265,21 @@ Tutor* School::creatingTutor() {
     //needs to check if the student already exist
 
     cin.ignore();
-
-
+    cout<<"Please enter the number of his office place:"<<endl;
+    string office_plc;
+    cin>>office_plc; //verifying ->maybe take int and convert to string is preferd
+    cin.ignore();
+    cout<<"Please enter the number of years the secretary is at his job:"<<endl;
+    double mng_exp_time;
+    cin>>mng_exp_time; //verify
+    cin.ignore();
+    cout<<"Enter the number of your kids learning at this school:"<<endl;
+    int num_of_kids;
+    cin>>num_of_kids;//verify
+    Secretary sec = Secretary(frs_name,lst_name,office_plc,mng_exp_time,num_of_kids);
+    Secretary* psec = &sec;
+    //adding to vector of workers
+    this->PointWorker.push_back(psec);
+    return psec;
 }
-*/
-//:Secretary(std::string frt_name, std::string lst_name, string office_plc, double mng_exp_time,
-//	int num_of_kids) : AdministrationPersonal(frt_name, lst_name, office_plc, mng_exp_time) {
+
