@@ -45,7 +45,7 @@ void Secretary::Print_Details() {
 		std::cout << " No " << endl;
 	}
 }
-
+/*
 int main() {
 	
 	string F_n = "Israel", f2 = "hello", f3 = "alisa", f4 = "Inona", f6 = "Smith";
@@ -67,7 +67,7 @@ int main() {
 
 
 }
-
+*/
 //Pupil::Pupil(string frt_name, string lst_name, char letterLayer, int numClass, vector<int> Grades, Class pupilClass) :
 //Person(frt_name, lst_name)
 

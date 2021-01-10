@@ -15,7 +15,7 @@ using namespace std;
 
 School* School::oneSchool = NULL; //the static pointer
 //need for static method ->only one school
-School& School::theOneSchool() {
+School* School::theOneSchool() {
     if (oneSchool==NULL){
         //the school was not created yet
         int numLayer;
@@ -23,10 +23,10 @@ School& School::theOneSchool() {
         vector<Pupil *> pupil;
         vector<Worker *> worker;
         oneSchool = new School(numLayer,layer,pupil,worker);
-        return *oneSchool;
+        return oneSchool;
     }
     else { //school already ones inited
-        return *oneSchool;
+        return oneSchool;
     }
 }
 School::School(int numLayer, vector<Layer *> layer, vector<Pupil *> pupil, vector<Worker *> worker) {
@@ -192,14 +192,19 @@ Teacher* School::creatingTeacher() {
 
     cin.ignore();
     cout<<"Please enter in the subject the Teacher is teaching(at least one):\n"
-          "Finish by entering .."<<endl;
+          "Finish by entering: end "<<endl;
     vector<string> study_sbj;
     string subj;
     while (cin>>subj){
-        study_sbj.push_back(subj);
-    }
-    cin.ignore();
-    cout<<"Please enter the number of years the teacher is a teacher:";
+        if(subj == "end") {
+            break;
+        }
+        else{
+            study_sbj.push_back(subj);
+        }
+    }//check a least one subj
+    //cin.ignore();
+    cout<<"Please enter the number of years the teacher is a teacher:"<<endl;
     double tch_exp_time;
     cin>>tch_exp_time;
     Teacher newTeacher = Teacher(frs_name,lst_name,study_sbj,study_sbj.size(),tch_exp_time);
@@ -283,3 +288,15 @@ Secretary* School::creatingSecretary() {
     return psec;
 }
 
+int main(){
+    string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
+    string L_n = "Levi";
+    string F_n1 = "Israeli";
+    string L_n1 = "Levli";
+    string sub[15] = {"a"};
+    vector<int> gra = {100,75,90,100},gr1 = {56,100,100,100};
+    vector<Pupil*> Ppupil;
+    School *s = s->theOneSchool();
+    s->menu();
+    return 0;
+}

@@ -31,7 +31,7 @@ class School{
 protected:
 public:
     ~School();
-    static School& theOneSchool(); //single School is being created
+    static School* theOneSchool(); //single School is being created
     void menu(); //prints out the management menu of the school
     int lookForLayer(char letterLayer);
     void newLayerAdd(Pupil* pnewP, char layerLet);

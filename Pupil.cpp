@@ -79,14 +79,7 @@ char Pupil::getLayer()const {
 int Pupil::getClassnum()const{
     return this->numClass;
 }
-int main(){
-    string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
-    string L_n = "Levi";
-    string F_n1 = "Israeli";
-    string L_n1 = "Levli";
-    string sub[15] = {"a"};
-    vector<int> gra = {100,75,90,100},gr1 = {56,100,100,100};
-    vector<Pupil*> Ppupil;
+
   /*  Teacher t1  = Teacher(F_n1,L_n1,sub,15,12.30);
     Teacher *Pt1;
     Pt1 = &t1;
@@ -106,5 +99,3 @@ int main(){
     C1[1].Print_Details();
 
 */
-    return 0;
-}
