@@ -8,6 +8,9 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include "Worker.h"
+#include "Pupil.h"
+#include <typeinfo>
 template<typename T>
 class VecAnalyser{
 private:
@@ -28,6 +31,8 @@ public:
     //for workers->highest salary)
     bool indexIsManager(int index); //RTTI use typeid(*(vec)[i])
     bool inRange(int index);
+    void maxWorker();
+    void maxPupil();
 
 };
 

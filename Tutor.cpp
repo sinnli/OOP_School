@@ -36,6 +36,9 @@ void Tutor::Print_Details() {
 Tutor::~Tutor() {
     cout<<"Tutor is deleted"<<endl;
 }
+Class* Tutor::Get_ClassPointer() {
+    return this->Class_m;
+}
 
 
 

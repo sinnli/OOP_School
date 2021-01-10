@@ -18,5 +18,6 @@ public:
 	bool Top_Person();
 	void Print_Details();
 	~Tutor();
+	Class* Get_ClassPointer();
 };
 #endif

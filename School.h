@@ -16,6 +16,7 @@ class Teacher;
 class Class;
 class Tutor;
 class Secretary;
+class VecAnalyser;
 
 class School{
     int numOfLayers = 0;
@@ -34,12 +35,14 @@ public:
     static School* theOneSchool(); //single School is being created
     void menu(); //prints out the management menu of the school
     int lookForLayer(char letterLayer);
+    int lookForWorker(string frt_name,string lst_name);
     void newLayerAdd(Pupil* pnewP, char layerLet);
     Class* newClassAdd(Pupil *pnewP,char layerLet);
     Tutor* creatingTutor();
     Pupil creatingPupil();
     Teacher* creatingTeacher();
     Secretary* creatingSecretary();
+    void printClassOfTutor();
 
     //creatingManager(); //use int num of Manager
 

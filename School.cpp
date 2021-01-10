@@ -10,6 +10,8 @@
 #include "Class.h"
 #include "Tutor.h"
 #include "Secretary.h"
+#include "VecAnalyser.h"
+
 
 using namespace std;
 
@@ -113,8 +115,8 @@ void School::menu() {
             }
         }
         if (state == 7){ //prints out standing people
-            cout<<"All outstanding peple at school:"<<endl;
-            cout<<"Top studenst:"<<endl;
+            cout<<"All outstanding people at school:"<<endl;
+            cout<<"Top students:"<<endl;
             for (int i = 0;i<this->PointPupil.size();i++){
                 if (this->PointPupil[i]->Top_Person()){
                     this->PointPupil[i]->Print_Details();
@@ -126,6 +128,15 @@ void School::menu() {
                     this->PointWorker[i]->Print_Details();
                 }
             }
+        }
+        if (state == 8){ //prints out class of tutor
+            this->printClassOfTutor();
+        }
+        if (state == 9){ //prints out highest paid worker
+            //template <typename Worker>
+            printMax<Worker>(*this->PointWorker);
+
+
         }
         if (state == 10) {                    // exit the menu
             this->~School();
@@ -286,6 +297,29 @@ Secretary* School::creatingSecretary() {
     //adding to vector of workers
     this->PointWorker.push_back(psec);
     return psec;
+}
+
+void School::printClassOfTutor() {
+    cout<<"Please enter the first name of tutor of whom the pupil of class are to be printed:"<<endl;
+    string frs_name;
+    cin>>frs_name; //verifying needed
+    cout<<"Please enter the last name of the tutor:"<<endl;
+    string lst_name;
+    cin>>lst_name; //verify
+    //look for tutor in workers vec
+    int tutorIndex = this->lookForWorker(frs_name,lst_name);
+    //this->PointWorker[tutorIndex]
+
+
+}
+int School::lookForWorker(string frt_name, string lst_name) {
+     for (int i=0; i<this->PointWorker.size();i++){
+        if ((this->PointWorker[i]->getPerson_FirstName()==frt_name)&&
+        (this->PointWorker[i]->getPerson_LastName()==lst_name)){
+            return i;
+        }
+     return -1; //no such index
+    }
 }
 
 int main(){
