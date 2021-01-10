@@ -27,7 +27,7 @@ public:
     void printMax();//prints the objects with max value(for students ->highest average
     //for workers->highest salary)
     bool indexIsManager(int index); //RTTI use typeid(*(vec)[i])
-    bool outOfRange(int index);
+    bool inRange(int index);
 
 };
 
