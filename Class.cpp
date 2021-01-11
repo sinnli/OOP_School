@@ -82,4 +82,13 @@ void Class::plusOne_numStudClass() {
     this->numStudClass = this->numStudClass+1;
     return;
 }
+//another ctor
+void Class::Set_Class_details(int numClass, char layerLet, const vector<Pupil *> PointToStud, int numStudInClass,
+                              Tutor *educator) {
+    this->numOfClass = numClass;
+    this->nameOfLayer = layerLet;
+    this->PoinToStuInClass = PointToStud;
+    this->numStudClass = numStudInClass;
+    this->educator = educator;
 
+}

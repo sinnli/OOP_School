@@ -3,17 +3,27 @@
 
 Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, Class* Class):
 	Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time){
-
+    //class was created
 	this->Class_m = Class;
 }
-Tutor::Tutor(Teacher *teacher,char layerLet,int numClass) {
-    //if class in layer exist ..just add class
-    //layer.look for classNUM
-    //else create new class
-    //add to the layer.point to class vector ->not sure about that
-
-    //this->Class_m = Class
+Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, char layerLet, int numClass):
+        Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time){
+    this->Class_m = new Class;
 }
+
+void Tutor::Set_Class_details(int numClass, char layerLet, const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator) {
+    this->Class_m->Set_Class_details(numClass, layerLet, PointToStud, numStudInClass, this);
+}
+
+Class* Tutor::Get_Class() {
+    return this->Class_m;
+}
+
+void Tutor::Set_to_Class(Class* Class) {
+
+    this->Class_m = Class;
+}
+
 
 double Tutor::Get_Sallary() {
 	return (this->Get_Sallary()+1000);

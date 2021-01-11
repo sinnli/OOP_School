@@ -30,6 +30,8 @@ public:
     int Get_numOfClass();
     char Get_nameOfLayer();
     void Print_Students();
+    void Set_Class_details(int numClass, char layerLet, const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator);
+
 
 };
 

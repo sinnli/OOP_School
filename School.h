@@ -40,7 +40,7 @@ public:
     int lookForWorker(string frt_name,string lst_name);
     void newLayerAdd(Pupil* pnewP, char layerLet);
     Class* newClassAdd(Pupil *pnewP,char layerLet);
-    Tutor* creatingTutor();
+    Tutor* creatingTutor(char layerLet,int classNum);
     Pupil creatingPupil();
     Teacher* creatingTeacher();
     Secretary* creatingSecretary();
@@ -48,6 +48,7 @@ public:
     double verify_double(double num);
     int verify_int(int num);
     string verify_string(string str);
+    Worker* creatingWorker();
 
 
     //creatingManager(); //use int num of Manager
