@@ -16,8 +16,17 @@ Worker::~Worker() {
 double Worker::Get_Exp_Time() {
 	return this->exp_time;
 }
-
-
+double Worker::Get_Sallary(){
+    double default_sal = 0;
+    return default_sal;
+}
+void Worker::Print_Details(){
+    return;
+}
+void Worker::Get_Max() {
+    this->Get_Sallary();
+    return;
+}
 
 
 

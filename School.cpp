@@ -1,7 +1,7 @@
 //
 // Created by liel on 03/01/2021.
 //
-
+#include <iostream>
 #include "School.h"
 #include "Worker.h"
 #include "Layer.h"
@@ -133,10 +133,9 @@ void School::menu() {
             this->printClassOfTutor();
         }
         if (state == 9){ //prints out highest paid worker
-            //template <typename Worker>
-            printMax<Worker>(*this->PointWorker);
-
-
+            VecAnalyser<Worker> vecAnObj;
+            vecAnObj.SetVector(this->PointWorker);
+            vecAnObj.printMax();
         }
         if (state == 10) {                    // exit the menu
             this->~School();
@@ -318,10 +317,39 @@ int School::lookForWorker(string frt_name, string lst_name) {
         (this->PointWorker[i]->getPerson_LastName()==lst_name)){
             return i;
         }
-     return -1; //no such index
     }
+    return -1; //no such index
 }
-
+double School::verify_double(double num) {
+    std::cin >> num;
+    while (std::cin.fail()) {
+        std::cout << "Error! Please enter a number(no letters or other characters):" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> num;
+    }
+    return num;
+}
+int  School::verify_int(int num) {
+    std::cin >> num;
+    while (std::cin.fail()) {
+        std::cout << "Error! Please enter a number(no letters or other characters):" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> num;
+    }
+    return num;
+}
+string School::verify_string(string str) {
+    std::cin >> str;
+    while (std::cin.fail()) {
+        std::cout << "Error! Please enter a number(no letters or other characters):" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> str;
+    }
+    return str;
+}
 int main(){
     string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
     string L_n = "Levi";

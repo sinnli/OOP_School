@@ -53,6 +53,9 @@ void Person::printPeople() {
     cout<<this->last_name<<endl;
 }
 
+void Person::Get_Max() {
+    return;
+}
 
 
 

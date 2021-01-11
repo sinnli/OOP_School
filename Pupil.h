@@ -36,6 +36,7 @@ public:
     virtual bool Top_Person() ;//average over 85, no subject under 65
     char getLayer()const;
     int getClassnum()const;
+    virtual void Get_Max();
 
 };
 

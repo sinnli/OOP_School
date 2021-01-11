@@ -6,9 +6,10 @@
 #define UNTITLED_SCHOOL_H
 
 #include <vector>
-#include <iostream>
+
+
 using namespace std;
-class Layer; //declaring the class here and including in cpp file
+class Layer; //forward declaration
 class Pupil;
 class Worker;
 class Layer;
@@ -16,6 +17,7 @@ class Teacher;
 class Class;
 class Tutor;
 class Secretary;
+template <typename T>
 class VecAnalyser;
 
 class School{
@@ -43,6 +45,10 @@ public:
     Teacher* creatingTeacher();
     Secretary* creatingSecretary();
     void printClassOfTutor();
+    double verify_double(double num);
+    int verify_int(int num);
+    string verify_string(string str);
+
 
     //creatingManager(); //use int num of Manager
 

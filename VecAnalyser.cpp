@@ -3,18 +3,38 @@
 //
 
 #include "VecAnalyser.h"
+#include "Person.h"
+#include <iostream>
+#include <string.h>
+#include "Worker.h"
+#include "Pupil.h"
+#include <typeinfo>
 
 
+/*
 template<typename T>
 VecAnalyser<T>::VecAnalyser(vector<T*> data) {
     this->data = data; //the vector
 }
-
+*/
+/*
 template<typename T>
-VecAnalyser<T>::~VecAnalyser<T>() {
+VecAnalyser<T>::VecAnalyser() {
+}
+  */
+/*
+template<typename T>
+void VecAnalyser<T>::SetVector(vector<T *> the_data) {
+    this->data = the_data;
+}
+ */
+/*
+template<typename T>
+VecAnalyser<T>::~VecAnalyser() {
     delete[] this->data; //maybe more needed
 }
-
+*/
+/*
 template<typename T>
 bool VecAnalyser<T>::inRange(int index) {
 
@@ -23,7 +43,8 @@ bool VecAnalyser<T>::inRange(int index) {
     }
     return true; //index in range
 }
-
+ */
+/*
 template<typename T>
 T VecAnalyser<T>::returnIndex(int i) const {
     string Error = "No Person at given index ";
@@ -35,7 +56,7 @@ T VecAnalyser<T>::returnIndex(int i) const {
     try{
         if (this->inRange(i)){
             //there is such index
-            return (*this->data[i]);
+            return (this->data[i]);
         }
         throw Error;
     }
@@ -43,7 +64,8 @@ T VecAnalyser<T>::returnIndex(int i) const {
         cout<< Error;
     }
 }
-
+*/
+/*
 template<typename T>
 void VecAnalyser<T>::swap(int index_1,int index_2){
 
@@ -76,7 +98,8 @@ void VecAnalyser<T>::swap(int index_1,int index_2){
         cout<<Error;
     }
 }
-
+*/
+/*
 template<typename T>
 void VecAnalyser<T>::printElement(int index) {
     string Error = "No Person at given index ";
@@ -98,6 +121,8 @@ void VecAnalyser<T>::printElement(int index) {
     }
 
 }
+ */
+/*
 template <typename T>
 void VecAnalyser<T> ::printAll() {
     for(int i = 0;i<this->data.size();i++) {
@@ -105,6 +130,8 @@ void VecAnalyser<T> ::printAll() {
     }
     return;
 }
+  */
+/*
 template <typename T>
 void VecAnalyser<T>::printMax() {
     if (typeid(*(this->data)).name()== typeid(Worker).name()){ //vector of workers->look for highest salary
@@ -115,7 +142,9 @@ void VecAnalyser<T>::printMax() {
     }
     return;
 }
+ */
 
+/*
 
 template <typename T>
 void VecAnalyser<T>::maxWorker() {
@@ -129,6 +158,8 @@ void VecAnalyser<T>::maxWorker() {
     this->data[max[1]].print.Details; //printing out the worker with highest salary
     return;
 }
+  */
+/*
 template <typename T>
 void VecAnalyser<T>::maxPupil() {
     double max[2] = {0,0}; //at the beginning max[0] = grade average, max[1] = index with max salary
@@ -169,3 +200,4 @@ bool VecAnalyser<T>::indexIsManager(int index) {
     }
 }
 
+*/
