@@ -38,8 +38,11 @@ public:
     void menu(); //prints out the management menu of the school
     int lookForLayer(char letterLayer);
     int lookForWorker(string frt_name,string lst_name);
+    int lookForPupil(string frs_name,string lst_name);
     void newLayerAdd_pupil(Pupil* pnewP, char layerLet);
-    Class* newClassAdd(Pupil *pnewP,char layerLet);
+    void newLayerAdd_tutor(Tutor* pnewT,char layerLet);
+    Class* newClassAdd_pupil(Pupil *pnewP,char layerLet);
+    Class* newClassAdd_tutor(Tutor* pnewT,char layerlet);
     Tutor* creatingTutor();
     Pupil* creatingPupil();
     Teacher* creatingTeacher();
@@ -47,10 +50,15 @@ public:
     void printClassOfTutor();
     double verify_double(double num);
     int verify_int(int num);
+    int verify_classNum(int classNum);
     string verify_string(string str);
     Worker* creatingWorker();
     Worker* workerExistAlready(int workerIndex,Worker* pw);
+    Pupil* pupilExistAlready(int pupilIndex,Pupil* pPupil);
+    char verify_layLetter(char layLetter);
     vector<string> creatingStudy_Sbj();
+
+
 
 
     //creatingManager(); //use int num of Manager
