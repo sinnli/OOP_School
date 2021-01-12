@@ -67,6 +67,10 @@ Teacher::~Teacher() {
     cout<<"deleting Teacher"<<endl;
 }
 
+vector<string> Teacher::Get_sturdy_sbj() {
+    return this->study_sbj;
+}
+
 
 
 

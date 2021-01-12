@@ -26,5 +26,6 @@ public:
     void Print_Subjects();
     void Print_Details();
     ~Teacher();
+    vector<string> Get_sturdy_sbj();
 };
 #endif

@@ -6,9 +6,11 @@ Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num
     //class was created
 	this->Class_m = Class;
 }
+
+
 Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, char layerLet, int numClass):
         Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time){
-    this->Class_m = new Class;
+    this->Class_m;
 }
 
 void Tutor::Set_Class_details(int numClass, char layerLet, const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator) {

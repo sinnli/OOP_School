@@ -42,6 +42,7 @@ Pupil & Class ::operator[]( int i )const
 Class& Class::operator+=(Pupil* pupil) {
     //shared_ptr<Pupil> pPupil = make_shared<Pupil>();
     this->PoinToStuInClass.push_back(pupil);
+    this->numStudClass+=1;
     //adding an student  in the end of the vector
     return *this;
 }
@@ -82,7 +83,7 @@ void Class::plusOne_numStudClass() {
     this->numStudClass = this->numStudClass+1;
     return;
 }
-//another ctor
+//like another ctor
 void Class::Set_Class_details(int numClass, char layerLet, const vector<Pupil *> PointToStud, int numStudInClass,
                               Tutor *educator) {
     this->numOfClass = numClass;
@@ -91,4 +92,22 @@ void Class::Set_Class_details(int numClass, char layerLet, const vector<Pupil *>
     this->numStudClass = numStudInClass;
     this->educator = educator;
 
+}
+Tutor* Class::Get_Tutor() {
+    return this->educator;
+}
+Class::Class(char nameLayer, int numClass) {
+    this->nameOfLayer = nameLayer;
+    this->PoinToStuInClass; //empty
+    this->educator; //empty
+    this->numOfClass = numClass;
+    this->numStudClass = 0; //empty
+}
+void Class::addToClass(Pupil *pupil) {
+    this->PoinToStuInClass.push_back(pupil);
+    this->numStudClass+=1;
+}
+void Class::Set_Tutor(Tutor* tutor) {
+    this->educator = tutor;
+    return ;
 }
