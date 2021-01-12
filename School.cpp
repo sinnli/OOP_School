@@ -58,9 +58,7 @@ void School::menu() {
         std::cin >> state;
         if (state == 1) {       // add new pupil
             Pupil* pnewP = creatingPupil();
-            //add new layer if needed
-            char layerLet = pnewP->getLayer();
-            //returns true if layer exist in vector of layer
+            char layerLet = pnewP->getLayer();  //returns true if layer exist in vector of layer
             int layerIndex = this->lookForLayer(layerLet);
             if (layerIndex==-1){
                 //this layer does not exist yet
@@ -80,16 +78,16 @@ void School::menu() {
             }
         }
         if (state == 2) {    // add new teacher to school
-            Teacher* pnewT = creatingTeacher(); //the creation of teacher
+            this->creatingTeacher(); //the creation of teacher
         }
         if (state == 3) { //adds new tutor
-            creatingTutor();
+            this->creatingTutor();
         }
         if (state == 4) {          // adds manager
 
         }
         if (state == 5) { //adds new secretary
-            creatingSecretary(); //is also added to workers pointer vector of school
+           // creatingSecretary(); //is also added to workers pointer vector of school
         }
         if (state == 6){//prints person details
             cout<<"All people at school with their details:"<<endl;
@@ -129,44 +127,70 @@ void School::menu() {
             this->~School();
             break;
         }
-        if ((0<state)&&(state<11)){
+        if ((state<1)||(state>10)){
             std::cout << "Error:The Input given was incorrect" << std::endl;
-            menu();
         }
+        menu();
     }
 }
 
 Pupil* School::creatingPupil(){
     cout<<"Please enter the first name of the student:"<<endl;
-    string frs_name = this->verify_string(frs_name);
+    string frs_name ;
+    cin>>frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
     cout<<"Please enter the last name of the student:"<<endl;
-    string lst_name = this->verify_string(lst_name);
+    string lst_name ;
+    cin>>lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> lst_name;
+    }
     cout<<"Please enter the layer of the student(can be only one char between 'a' and 'f')."<<endl;
     char letterLayer = this->verify_layLetter(letterLayer); //verifying getting a char between 'a' and 'f'.
     cout<<"Please enter number of class(can be only number between 1 and 3)."<<endl;
     int numClass = this->verify_classNum(numClass);
     cout<<"Please enter the grades of the Student. (After each grade press enter.) \n"
-          "To stop please enter any character(but not a number).\n"
+          "To stop please enter 101.\n"
           "All the grades are between 0 and 100."<<endl;
     //checkeeeee
     vector<int> grades;
     int grd;
-    while(cin>> grd){ //returns false for characters because grd is int
-        grd = verify_int(grd);
-        //verifying the input first
+
+    while (cin>>grd) {
+        while ((cin.fail()) || (grd < 0) || (grd > 101)) { //returns false for characters because grd is int
+            cout << "Error! Please enter a number between 0 and 100:" << std::endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+            cin >> grd;
+            //verifying the input first
+        }
+        if (grd == 101) {
+            break;
+        }
         grades.push_back(grd);
     }
-    Pupil newPupil = Pupil(frs_name,lst_name,letterLayer,numClass,grades); //pupil created
-    Pupil* pnewPupil = &newPupil;
+    Pupil* newPupil = new Pupil(frs_name,lst_name,letterLayer,numClass,grades); //pupil created
     //needs to check if the student already exist
-    int pupilIndex = this->lookForPupil(pnewPupil->getPerson_FirstName(),pnewPupil->getPerson_LastName());
-    pnewPupil = this->pupilExistAlready(pupilIndex,pnewPupil);
-    this->PointPupil.push_back(pnewPupil);//added to Pupil of school
-    return pnewPupil;
+    int pupilIndex = this->lookForPupil(newPupil->getPerson_FirstName(),newPupil->getPerson_LastName());
+    while (pupilIndex!=-1){
+        cout<<"Error! This worker exists already.Try again:"<<endl;
+        this->creatingPupil();
+    }
+    this->PointPupil.push_back(newPupil);//added to Pupil of school
+    return newPupil;
 }
+
 Pupil* School::pupilExistAlready(int pupilIndex,Pupil* pPupil) {
     while (pupilIndex == -1){
-        cout<<"Try again this worker already exist."<<endl;
+        cout<<"Try again this pupil already exist."<<endl;
         pPupil = this->creatingPupil();
         pupilIndex = this->lookForWorker(pPupil->getPerson_FirstName(),pPupil->getPerson_LastName());
         //checks if this pupil exist already
@@ -192,16 +216,47 @@ int School::lookForPupil(string frs_name, string lst_name) {
     }
     return -1; //no such index
 }
+
 Teacher* School::creatingTeacher() {
-    Worker* pw = creatingWorker();
-    int indexWorker  = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
-    pw = this->workerExistAlready(indexWorker,pw); //checks if worker already exists
+    cout<<"Please enter the first name of the teacher:"<<endl;
+    string frs_name;
+    cin >> frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    cout<<"Please enter the last name of the teacher:"<<endl;
+    string lst_name;
+    cin>> lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> lst_name;
+    }
+    int indexWorker  = this->lookForWorker(frs_name,lst_name);
+    while (indexWorker!=-1){
+        cout<<"Error! This worker exists already.Try again:"<<endl;
+        this->creatingTeacher();
+    }
+    cout<<"Please enter the of years of experience as Teacher:"<<endl;
+    double tchExp_time;
+    std::cin >> tchExp_time;
+    while (std::cin.fail()) {
+        std::cout << "Error! Please enter a number(no letters or other characters):" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> tchExp_time;
+    }
     vector<string> study_sbj = this->creatingStudy_Sbj(); //gets at leadt one subject to teach
-    Teacher newTeacher = Teacher(pw->getPerson_FirstName(),pw->getPerson_LastName(),study_sbj,study_sbj.size(),pw->Get_Exp_Time());
-    Teacher* pnewTeacher = &newTeacher;
-    this->PointWorker.push_back(pnewTeacher);
+    Teacher* newTeacher = new Teacher(frs_name,lst_name,
+                                      study_sbj,study_sbj.size(),tchExp_time);
+
+    this->PointWorker.push_back(newTeacher);
     //add the teacher to Workers of school
-    return pnewTeacher;
+     return newTeacher;
 }
 
 void School::newLayerAdd_pupil(Pupil *pnewP,char layerLet) {
@@ -210,18 +265,32 @@ void School::newLayerAdd_pupil(Pupil *pnewP,char layerLet) {
     //creating new Layer:
     vector<Class *> classesInLayer;
     classesInLayer.push_back(pnewClass); //new class added to new layer
-    Layer La = Layer(layerLet, classesInLayer);
-    Layer *pLa = &La;
+    Layer* La = new Layer(layerLet, classesInLayer);
     //add to layerVector of School
-    this->PointLayers.push_back(pLa);
+    this->PointLayers.push_back(La);
+    this->numOfLayers += 1;//adding to layers count of school
+}
+void School::newLayerAdd_tutor(Tutor *pnewT, char layerLet,int classNum) {
+    //creating new Class:
+    Class* pnewClass =  this->newClassAdd_tutor(pnewT,layerLet,classNum);
+    //creating new Layer:
+    vector<Class *> classesInLayer;
+    classesInLayer.push_back(pnewClass); //new class added to new layer
+    Layer* La = new Layer(layerLet, classesInLayer);
+    //add to layerVector of School
+    this->PointLayers.push_back(La);
     this->numOfLayers += 1;//adding to layers count of school
 }
 Class* School::newClassAdd_pupil(Pupil *pnewP,char layerLet){
-
-    Class theNewClass = Class(layerLet,pnewP->getClassnum());
-    Class* ptheNewClass = &theNewClass;
-    ptheNewClass->addToClass(pnewP);
-    return ptheNewClass;
+    Class* theNewClass = new Class(layerLet,pnewP->getClassnum());
+    theNewClass->addToClass(pnewP);//add student to new class
+    return theNewClass;
+}
+Class* School::newClassAdd_tutor(Tutor *pnewT, char layerlet,int classNum) {
+    Class* theNewClass = new Class(layerlet,classNum);
+    theNewClass->Set_Tutor(pnewT);
+    pnewT->Set_to_Class(theNewClass);
+    return theNewClass;
 }
 
 Tutor* School::creatingTutor() {
@@ -229,14 +298,17 @@ Tutor* School::creatingTutor() {
     char layerLet = verify_layLetter(layerLet);
     cout<<"In what class number is the new tutor to be added ->you can enter a number beween 1 and 3:"<<endl;
     int classNum = verify_int(classNum);
-
-    Worker* pw = this->creatingWorker(); //asking for first/last name and exp_time
+    Worker* pw = this->creatingWorker(); //asking for first/last name
+    cout<<"Please enter the of years of experience as Tutor:"<<endl;
+    double tchExp_time = verify_double(tchExp_time);
     int workerIndex = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
-    pw = workerExistAlready(workerIndex,pw); //checkes if worker already exist
+    while (workerIndex!=-1){
+        cout<<"Error! This worker exists already.Try again:"<<endl;
+        this->creatingTutor();
+    } //checkes if worker already exist
     vector<string> study_sbj = this->creatingStudy_Sbj(); //gets at least one subject to teach
-    Tutor newTutor = Tutor(pw->getPerson_FirstName(),pw->getPerson_LastName(),
-                           study_sbj,study_sbj.size(),pw->Get_Exp_Time(),layerLet,classNum);
-    Tutor* pnewTutor = &newTutor;
+    Tutor* newTutor = new Tutor(pw->getPerson_FirstName(),pw->getPerson_LastName(),
+                           study_sbj,study_sbj.size(),tchExp_time);
     //check if there is already a tutor for this class
    int layerIndex = this->lookForLayer(layerLet);
     if(layerIndex==-1){
@@ -245,22 +317,30 @@ Tutor* School::creatingTutor() {
     if (layerIndex!=-1){
        //this layer exist
        if(this->PointLayers[layerIndex]->lookForClass(classNum)) {
-            //there is a class like this ->there is also  a tutor
+            //there is a class like this ->there may be also  a tutor ->checkkkeee
             Tutor* oldTutor  = this->PointLayers[layerIndex]->getClass(classNum)->Get_Tutor();
-            //continuee
+            oldTutor->Set_no_class(); //now a tutor of no class
+           //set tutor
+           this->PointLayers[layerIndex]->getClass(classNum)->Set_Tutor(newTutor); //the tutor was set in class
+           newTutor->Set_to_Class(this->PointLayers[layerIndex]->getClass(classNum)); //the tutor has a class
        }
        else{
            //open new class +add to layer vector
+           this->newClassAdd_tutor(newTutor,layerLet,classNum); //only new class and adding of tutor to class
        }
-       //set tutor
-       this->PointLayers[layerIndex]->getClass(classNum)->Set_Tutor(pnewTutor);
 
     }
-    this->PointWorker.push_back(pnewTutor);  //is also added to workers pointer vector of school
-    return pnewTutor;
+    else{
+        //there is no layer ->also no class
+        this->newLayerAdd_tutor(newTutor,layerLet,classNum);
+    }
+    this->PointWorker.push_back(newTutor);  //is also added to workers pointer vector of school
+    return newTutor;
 }
+
+/*
 Secretary* School::creatingSecretary() {
-    Worker* pw = creatingWorker();
+    //Worker* pw = creatingWorker();
     int indexWorker  = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
     pw = this->workerExistAlready(indexWorker,pw); //checks if worker already exists
     cout<<"Please enter the number of his office place:"<<endl;
@@ -275,7 +355,7 @@ Secretary* School::creatingSecretary() {
     this->PointWorker.push_back(psec);
     return psec;
 }
-
+*/
 void School::printClassOfTutor() {
     cout<<"Please enter the first name of tutor of whom the pupil of class are to be printed:"<<endl;
     string frs_name = verify_string(frs_name);
@@ -337,24 +417,38 @@ char School::verify_layLetter(char layLetter) {
     return layLetter;
 }
 string School::verify_string(string str) {
-    std::cin >> str;
-    while (std::cin.fail()) {
-        std::cout << "Error! Please enter a string:" << std::endl;
-        std::cin.clear();
-        std::cin.ignore(256, '\n');
-        std::cin >> str;
+    cin >> str;
+    while (cin.fail()) {
+       cout << "Error! Please enter a string:" << std::endl;
+       cin.clear();
+       cin.ignore(256, '\n');
+       cin >> str;
     }
-    return str;
+    return  str;
 }
 Worker* School::creatingWorker(){ //every worker needs to begin with this creation
     cout<<"Please enter the first name of the teacher:"<<endl;
-    string frs_name = verify_string(frs_name);
+    string frs_name;
+    cin >> frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
     cout<<"Please enter the last name of the teacher:"<<endl;
-    string lst_name = verify_string(lst_name);
-    Worker w = Worker(frs_name,lst_name,0,0);
-    Worker *pw = &w;
-    return pw;
+    string lst_name;
+    cin >> lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    Worker* w =  new Worker(frs_name,lst_name,0,0);
+    return w;
 }
+
 Worker* School::workerExistAlready(int workerIndex,Worker* pw) {
     while (workerIndex == -1){
         cout<<"Try again this worker already exist."<<endl;
@@ -364,6 +458,7 @@ Worker* School::workerExistAlready(int workerIndex,Worker* pw) {
     }
     return pw;
 }
+
 vector<string> School::creatingStudy_Sbj() {
     cout<<"Please enter in the subject the Teacher is teaching(at least one):\n"
           "Finish by entering: end "<<endl;
@@ -378,6 +473,7 @@ vector<string> School::creatingStudy_Sbj() {
         }
     }//check a least one subj
     if(study_sbj.empty()){
+        cout<<"You need to enter a least one subject."<<endl;
         this->creatingStudy_Sbj(); //new chance to enter subjects of teacher
     }
     return study_sbj;

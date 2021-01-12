@@ -23,7 +23,7 @@ double Secretary::Get_Sallary() {
 
 bool Secretary::Top_Person() {
 	
-	if (this->Get_Exp_Time() > 10) {
+	if (this->Get_MngExp_Time() > 10) {
 		return true; 
 	}
 	return false; 
@@ -36,7 +36,7 @@ void Secretary::Print_Details() {
 	std::cout << "Secretary office: " << this->Get_office_plc() << endl;
 	std::cout << "Secretary's sallary: " << this->Get_Sallary() << endl;
 	std::cout << "Number of kids in school: " << this->num_of_kids << endl;
-	std::cout << "Secretary's expreince: " << this->Get_Exp_Time() << endl;
+	std::cout << "Secretary's expreince: " << this->Get_MngExp_Time() << endl;
 	std::cout << "Top Secretary: ";
 	if (this->top_person == true) {
 		std::cout << "Yes !! " << endl;

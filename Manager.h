@@ -7,11 +7,16 @@
 #pragma once
 #ifndef MANAGER_H
 #define MANAGER_H
+class Teacher;
+class AdministrationPersonal;
+class Class;
+class Worker;
 #include "Teacher.h"
 #include "AdministrationPersonal.h"
 #include "Class.h"
+#include "Worker.h"
 
-class Manager: public AdministrationPersonal, public Teacher{
+class Manager: public virtual AdministrationPersonal, public virtual Teacher {
 
 private:
     static Manager* manager;
@@ -23,6 +28,7 @@ public:
     double Get_Sallary();
     bool Top_Person();
     void Print_Details();
+    virtual ~Manager();
 
 };
 #endif

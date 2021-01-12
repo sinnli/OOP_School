@@ -13,7 +13,7 @@ private:
 public:
 	Secretary();
 	Secretary(std::string frt_name, std::string lst_name, string office_plc, double mng_exp_time, int num_of_kids);
-	~Secretary();
+	virtual ~Secretary();
 	double Get_Sallary();
 	bool Top_Person();
 	void Print_Details();

@@ -22,7 +22,7 @@ public:
     Class();
     Class(char nameLayer, int numClass,const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator);
     Class(char nameLayer, int numClass); //just open a new class
-    ~Class();
+    virtual ~Class();
     Class& operator+=(Pupil* pupil);//adds stud to Vector of students
     void addToClass(Pupil* pupil);
     Pupil &operator[]( int i )const; //returns student at given index of Vector

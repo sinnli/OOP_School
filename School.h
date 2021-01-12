@@ -40,9 +40,9 @@ public:
     int lookForWorker(string frt_name,string lst_name);
     int lookForPupil(string frs_name,string lst_name);
     void newLayerAdd_pupil(Pupil* pnewP, char layerLet);
-    void newLayerAdd_tutor(Tutor* pnewT,char layerLet);
+    void newLayerAdd_tutor(Tutor* pnewT,char layerLet,int classNum);
     Class* newClassAdd_pupil(Pupil *pnewP,char layerLet);
-    Class* newClassAdd_tutor(Tutor* pnewT,char layerlet);
+    Class* newClassAdd_tutor(Tutor* pnewT,char layerlet,int classNum);
     Tutor* creatingTutor();
     Pupil* creatingPupil();
     Teacher* creatingTeacher();
@@ -52,6 +52,7 @@ public:
     int verify_int(int num);
     int verify_classNum(int classNum);
     string verify_string(string str);
+    //int creatingWorker();
     Worker* creatingWorker();
     Worker* workerExistAlready(int workerIndex,Worker* pw);
     Pupil* pupilExistAlready(int pupilIndex,Pupil* pPupil);

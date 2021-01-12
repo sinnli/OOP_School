@@ -19,7 +19,7 @@ class Layer{
 public:
     Layer(); //default c-tor
     Layer(char nameLayer,const vector<Class*> classesInLayer);
-    ~Layer();
+    virtual ~Layer();
     Class &operator[]( int i )const; //getting class at given index of the vector
     void setLayerVec(Class* PClass); //adds class to layer
     bool lookForClass(Class* PClass); //looks for class in vector by given class*

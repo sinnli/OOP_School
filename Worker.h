@@ -23,6 +23,7 @@ protected:
 
 public:
 	Worker();
+    Worker(string frt_name , string lst_name ,double tch_exp_time);
 	Worker(string frt_name , string lst_name ,double tch_exp_time,double mng_exp_time);
 	Worker(const Worker& obj);
 	virtual double Get_Sallary();     // pure virtual function  // returns the sallary of the worker
@@ -32,7 +33,7 @@ public:
 	virtual void Get_Max();
     void Set_MngExp_Time(double mng_time);
     void Set_TchExp_Time(double tch_time);
-	~Worker();
+	virtual ~Worker();
 
 };
 

@@ -12,7 +12,7 @@
 class Worker;
 class Person;
 
-class Teacher: public Worker {
+class Teacher: public virtual Worker {
 
 protected:
     vector<string> study_sbj;      // subjects the teacher is teaching
@@ -25,7 +25,7 @@ public:
     bool Top_Person();
     void Print_Subjects();
     void Print_Details();
-    ~Teacher();
+    virtual ~Teacher();
     vector<string> Get_sturdy_sbj();
 };
 #endif

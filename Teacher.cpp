@@ -21,7 +21,7 @@ Teacher::Teacher( std::string frt_name,  std::string lst_name, vector<string> st
 double Teacher::Get_Sallary() {      // return the monthly sallary of the teacher 
 
 	double sallary, exp_time;
-	exp_time = this->Get_Exp_Time();
+	exp_time = this->Get_TchExp_Time();
 	sallary = (this->basis) * (1 + ((this->num_subj) / 10)) + 300 * (exp_time);     // the formula is : basis*(1+x/10)+300y ;(when x=num of subj, y=exp time)
 	return sallary;
 }
@@ -54,7 +54,7 @@ void Teacher::Print_Details() {
 	std::cout << "Teacher's full name: " << this->getPerson_FirstName() << " " << this->getPerson_LastName() << endl;
 	this->Print_Subjects();
 	std::cout << "Teacher's sallary: " << this->Get_Sallary() << endl;
-	std::cout << "Teacher's expreince: " << this->Get_Exp_Time() << endl;
+	std::cout << "Teacher's expreince: " << this->Get_TchExp_Time() << endl;
 	std::cout << "Top teacher: ";
 	if (this->top_person == true) {
 		std::cout << "Yes !! " << endl;

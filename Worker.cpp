@@ -1,17 +1,22 @@
 #include "Worker.h"
 
 
-Worker::Worker(): exp_time(-1){}        // defualt Ctor
+Worker::Worker() :tch_exp_time(-1) ,mng_exp_time(-1){}        // defualt Ctor
 
 
-Worker::Worker(string frt_name, string lst_name, double tch_exp_time, double mng_exp_time){ //Worker::Worker(string frt_name, string lst_name, double exp_time):Person(frt_name, lst_name) {     // first Ctor
+Worker::Worker(string frt_name, string lst_name, double tch_exp_time, double mng_exp_time):Person(frt_name, lst_name) {     // first Ctor
 
     this->mng_exp_time = mng_exp_time;
     this->tch_exp_time = tch_exp_time;
     this->basis = 25;
 }
 
+Worker::Worker(string frt_name, string lst_name, double tch_exp_time):Person(frt_name, lst_name) {     // first Ctor
 
+    this->mng_exp_time = 0;
+    this->tch_exp_time = tch_exp_time;
+    this->basis = 25;
+}
 Worker::~Worker() {
     cout<<"deleting Worker"<<endl;
 }

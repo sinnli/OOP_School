@@ -24,7 +24,7 @@ private:
 public:
     VecAnalyser(){};
    //VecAnalyser(vector<T*> data);
-    ~VecAnalyser(){};
+    virtual ~VecAnalyser(){};
     void SetVector( vector<T*> the_data)
     {this->data = the_data;};
 

@@ -29,7 +29,7 @@ protected:
 public:
     Pupil();//default c-tor
     Pupil(string frt_name , string lst_name ,char letterLayer,int numClass,vector<int> Grades);
-    ~Pupil();
+    virtual ~Pupil();
 
     double gradeaverage(); //how excact this average should be ?
     virtual void Print_Details();

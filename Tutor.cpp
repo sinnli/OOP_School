@@ -7,11 +7,10 @@ Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num
 	this->Class_m = Class;
 }
 
-
-Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, char layerLet, int numClass):
-        Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time){
-    this->Class_m;
+Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time){
+    this->Class_m;//empty
 }
+
 
 void Tutor::Set_Class_details(int numClass, char layerLet, const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator) {
     this->Class_m->Set_Class_details(numClass, layerLet, PointToStud, numStudInClass, this);
@@ -51,7 +50,9 @@ Tutor::~Tutor() {
 Class* Tutor::Get_ClassPointer() {
     return this->Class_m;
 }
-
+void Tutor::Set_no_class() {
+    this->Class_m = NULL;
+}
 
 
 

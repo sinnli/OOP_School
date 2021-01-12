@@ -28,7 +28,7 @@ public:
 	virtual void Print_Details() = 0;
 	virtual bool Top_Person() ;
 	virtual void Get_Max();
-	~Person();
+	virtual ~Person();
 
 };
 #endif

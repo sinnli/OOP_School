@@ -3,6 +3,13 @@
 //
 
 #include "Manager.h"
+#include "Teacher.h"
+#include "AdministrationPersonal.h"
+#include "Class.h"
+#include "Worker.h"
+
+
+Manager* Manager::manager = NULL;
 Manager::Manager(string frt_name, string lst_name, string office_plc,double mng_exp_time,
                  vector<string> study_sbj, int num_subj, double tch_exp_time)
 {
@@ -11,20 +18,35 @@ Manager::Manager(string frt_name, string lst_name, string office_plc,double mng_
     this->AdministrationPersonal::last_name = lst_name;
     this->Teacher::last_name = lst_name;
     this->AdministrationPersonal::Set_office_plc(office_plc);
-    this->Worker::Set_MngExp_Time(mng_exp_time);
+    //this->Set_MngExp_Time(mng_exp_time);
+
     this->Worker::Set_TchExp_Time(tch_exp_time);
     this->num_subj = num_subj;
     this->study_sbj = study_sbj;
 
 }
+Manager::~Manager() noexcept {
+    delete manager;
+    cout<<"Manger delete"<<endl;
+}
 
 Manager* Manager::Get_Manager() {
     if (manager == NULL) {
-        //manager = new Manager;
-        std::cout << "there is no active manager" << endl;
+        //manager was not created yet
+        //std::cout << "there is no manager" << endl;
+        string frt_name = "first_name";
+        string lst_name = "last_name";
+        string office_plc = "somewhere";
+        double mng_exp_time = 0;
+        double tch_exp_time = 0;
+        vector<string> study_sbj;//empty
+        int num_subj = 0;
+        manager = new Manager(frt_name,lst_name,office_plc,mng_exp_time,
+                study_sbj, num_subj,tch_exp_time);
+        return manager;
     }
     else{
-        std::cout << "School already has a manager" << endl;
+        //std::cout << "School already has a manager" << endl;
         return manager;
     }
 }
