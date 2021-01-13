@@ -10,6 +10,7 @@
 #include <cstring>
 #include <iostream>
 using namespace std;
+class Class;
 
 
 class Worker : public Person {
@@ -33,6 +34,7 @@ public:
 	virtual void Get_Max();
     void Set_MngExp_Time(double mng_time);
     void Set_TchExp_Time(double tch_time);
+    virtual Class* Get_Class();
 	virtual ~Worker();
 
 };

@@ -111,3 +111,6 @@ void Class::Set_Tutor(Tutor* tutor) {
     this->educator = tutor;
     return ;
 }
+vector<Pupil*> Class::Get_PointToPupilInClass() {
+    return this->PoinToStuInClass;
+}

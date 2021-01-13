@@ -35,6 +35,7 @@ public:
     void Set_Class_details(int numClass, char layerLet, const vector<Pupil*> PointToStud, int numStudInClass, Tutor* educator);
     Tutor* Get_Tutor();
     void Set_Tutor(Tutor* tutor); //and returns the current one
+    vector<Pupil*> Get_PointToPupilInClass();
 
 
 };

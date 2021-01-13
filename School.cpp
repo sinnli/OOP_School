@@ -39,6 +39,18 @@ School::School(int numLayer, vector<Layer *> layer, vector<Pupil *> pupil, vecto
 }
 
 School::~School() {
+    for (int i = 0; i < this->PointLayers.size(); ++i) {
+        for (int j = 0;j<this->PointLayers[i]->getClassOfLayer().size();j++){
+            delete this->PointLayers[i]->getClassOfLayer()[j];
+        }
+        delete this->PointLayers[i];
+    }
+    for (int i = 0; i < this->PointWorker.size(); ++i) {
+        delete this->PointWorker[i];
+    }
+    for (int i = 0; i < this->PointPupil.size(); ++i) {
+        delete this->PointPupil[i];
+    }
     delete oneSchool;
 }
 
@@ -182,9 +194,10 @@ Pupil* School::creatingPupil(){
         grades.push_back(grd);
     }
     Pupil* newPupil = new Pupil(frs_name,lst_name,letterLayer,numClass,grades); //pupil created
-    //needs to check if the student already exist
-    int pupilIndex = this->lookForPupil(newPupil->getPerson_FirstName(),newPupil->getPerson_LastName());
-    while (pupilIndex!=-1){
+    //checks if there is a person like this existing in school
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    int pupilIndex = this->lookForPupil(frs_name,lst_name);
+    while ((workerIndex!=-1)||(pupilIndex!=-1)){
         cout<<"Error! This worker exists already.Try again:"<<endl;
         this->creatingPupil();
     }
@@ -240,8 +253,9 @@ Teacher* School::creatingTeacher() {
         cin.ignore(256, '\n');
         cin >> lst_name;
     }
-    int indexWorker  = this->lookForWorker(frs_name,lst_name);
-    while (indexWorker!=-1){
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    int pupilIndex = this->lookForPupil(frs_name,lst_name);
+    while ((workerIndex!=-1)||(pupilIndex!=-1)){
         cout<<"Error! This worker exists already.Try again:"<<endl;
         this->creatingTeacher();
     }
@@ -302,16 +316,35 @@ Tutor* School::creatingTutor() {
     char layerLet = verify_layLetter(layerLet);
     cout<<"In what class number is the new tutor to be added ->you can enter a number beween 1 and 3:"<<endl;
     int classNum = verify_classNum(classNum);
-    Worker* pw = this->creatingWorker(); //asking for first/last name
-    cout<<"Please enter the of years of experience as Tutor:"<<endl;
+    cout<<"Please enter the first name of the tutor:"<<endl;
+    string frs_name;
+    cin >> frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    cout<<"Please enter the last name of the tutor:"<<endl;
+    string lst_name;
+    cin >> lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    cout<<"Please enter the of years of experience as tutor:"<<endl;
     double tchExp_time = verify_double(tchExp_time);
-    int workerIndex = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
-    while (workerIndex!=-1){
+    //checks if there is a person like this existing in school
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    int pupilIndex = this->lookForPupil(frs_name,lst_name);
+    while ((workerIndex!=-1)||(pupilIndex!=-1)){
         cout<<"Error! This worker exists already.Try again:"<<endl;
         this->creatingTutor();
-    } //checkes if worker already exist
+    }
     vector<string> study_sbj = this->creatingStudy_Sbj(); //gets at least one subject to teach
-    Tutor* newTutor = new Tutor(pw->getPerson_FirstName(),pw->getPerson_LastName(),
+    Tutor* newTutor = new Tutor(frs_name,lst_name,
                            study_sbj,study_sbj.size(),tchExp_time);
     //check if there is already a tutor for this class
    int layerIndex = this->lookForLayer(layerLet);
@@ -339,7 +372,6 @@ Tutor* School::creatingTutor() {
         this->newLayerAdd_tutor(newTutor,layerLet,classNum);
     }
     this->PointWorker.push_back(newTutor);  //is also added to workers pointer vector of school
-    delete pw; //check if this works with the name..
     return newTutor;
 }
 Manager* School::creatingManager() {
@@ -364,11 +396,13 @@ Manager* School::creatingManager() {
         cin.ignore(256, '\n');
         cin >> lst_name;
     }
-    int indexWorker  = this->lookForWorker(frs_name,lst_name);
-    while (indexWorker!=-1){
+    //checks if there is a person like this existing in school
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    int pupilIndex = this->lookForPupil(frs_name,lst_name);
+    while ((workerIndex!=-1)||(pupilIndex!=-1)){
         cout<<"Error! This worker exists already.Try again:"<<endl;
         this->creatingManager();
-    } //checkes if worker already exist
+    }
     cout<<"Please enter the number of his office place:"<<endl;
     int  Noffice_plc = verify_int(Noffice_plc);
     string office_plc = to_string(Noffice_plc);
@@ -402,11 +436,13 @@ Secretary* School::creatingSecretary() {
         cin.ignore(256, '\n');
         cin >> lst_name;
     }
-    int indexWorker  = this->lookForWorker(frs_name,lst_name);
-    while (indexWorker!=-1){
+    //checks if there is a person like this existing in school
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    int pupilIndex = this->lookForPupil(frs_name,lst_name);
+    while ((workerIndex!=-1)||(pupilIndex!=-1)){
         cout<<"Error! This worker exists already.Try again:"<<endl;
-        this->creatingTutor();
-    } //checkes if worker already exist
+        this->creatingSecretary();
+    }
     cout<<"Please enter the number of his office place:"<<endl;
     int  Noffice_plc = verify_int(Noffice_plc);
     string office_plc = to_string(Noffice_plc);
@@ -425,10 +461,29 @@ void School::printClassOfTutor() {
     string frs_name = verify_string(frs_name);
     cout<<"Please enter the last name of the tutor:"<<endl;
     string lst_name = verify_string(lst_name);
-    //look for tutor in workers vec
-    int tutorIndex = this->lookForWorker(frs_name,lst_name);
-    //this->PointWorker[tutorIndex]
-
+    //look for tutor in workers vec +checks if there is a person like this existing in school
+    int workerIndex = this->lookForWorker(frs_name,lst_name);
+    while ((workerIndex ==-1)){
+        cout<<"Error! There is no tutor with this name.\n"
+              "Try again:"<<endl;
+        this->printClassOfTutor();
+    }
+    cout<<"The class of the tutor is in class number: "<< this->PointWorker[workerIndex]->Get_Class()->Get_numOfClass()
+    <<"\n and the class is in layer is: "<<this->PointWorker[workerIndex]->Get_Class()->Get_nameOfLayer()<<endl;
+    cout<<"The class average is:"<<endl;
+    //here class average
+    cout<<"The pupils in class are:"<<endl;
+    vector<Pupil*> puplOfClass = this->PointWorker[workerIndex]->Get_Class()->Get_PointToPupilInClass();
+    for (int i = 0; i < puplOfClass.size(); ++i) {
+        puplOfClass[i]->Print_Details(); //printing each pupil of class with its details
+    }
+   cout<<"The outstanding pupils in class are:"<<endl;
+    for (int i = 0; i < puplOfClass.size(); ++i) {
+        if (puplOfClass[i]->Top_Person()==true){
+            puplOfClass[i]->Print_Details(); //printing each pupil of class with its details
+            //with or without details ?
+        }
+    }
 }
 int School::lookForWorker(string frt_name, string lst_name) {
      for (int i=0; i<this->PointWorker.size();i++){

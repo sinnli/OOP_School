@@ -1,12 +1,12 @@
 #include "Tutor.h"
 
-/*
+
 Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, Class* Class):
-	Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time){
+	Teacher(frt_name, lst_name, study_sbj, num_subj, tch_exp_time),Worker(frt_name,lst_name,tch_exp_time,0){
     //class was created
 	this->Class_m = Class;
 }
- */
+
 
 Tutor::Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time):
 Teacher(frt_name,lst_name,study_sbj,num_subj,tch_exp_time),Worker(frt_name,lst_name,tch_exp_time,0){

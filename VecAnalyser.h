@@ -131,13 +131,10 @@ public:
                     return false;
                 }
                 //there is such index
-                if  (Worker *w = dynamic_cast<Worker *>(this->data[0])) { //the vector of Workers
-                    // since the manager can't be in the pupil vector
-                    //look for manager
-                    //if (typeid(*(this->data[index]).name() == typeid(Manager).name()){
-                    // there is only a single manager->single person of this type
+                if  (typeid(this->data.at(index)).name() == "Manager") { //the vector of Workers
+                    //checks if object type is manager
                     return true;
-                    //}
+
                 }
                 return false;
             }

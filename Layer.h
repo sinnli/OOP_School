@@ -26,6 +26,7 @@ public:
     bool lookForClass(int classNum); //looks for class in vector by given classnum
     char getLayer();
     Class* getClass(int classNum);
+    vector<Class*> getClassOfLayer();
 };
 
 #endif //UNTITLED_LAYER_H

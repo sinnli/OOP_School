@@ -1,5 +1,5 @@
 #include "Worker.h"
-
+#include "Class.h"
 
 //Worker::Worker() :tch_exp_time(-1) ,mng_exp_time(-1){}        // defualt Ctor
 Worker::Worker(const Worker &obj):Person(obj.first_name, obj.last_name) {
@@ -52,6 +52,8 @@ void Worker::Get_Max() {
 }
 
 
-
+Class* Worker::Get_Class() {
+    return NULL;
+}
 
 

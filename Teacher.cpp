@@ -1,6 +1,7 @@
 #include "Teacher.h"
 #include "Worker.h"
 #include "Person.h"
+#include "Class.h"
 
 /*
 Teacher::Teacher(){
@@ -76,7 +77,9 @@ vector<string> Teacher::Get_sturdy_sbj() {
     return this->study_sbj;
 }
 
-
+Class * Teacher::Get_Class() {
+    return NULL;
+}
 
 
 

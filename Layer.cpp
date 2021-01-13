@@ -72,3 +72,6 @@ Class* Layer::getClass(int classNum){
 char Layer::getLayer() {
     return this->nameLayer;
 }
+vector<Class*> Layer::getClassOfLayer() {
+    return this->classesOfLayerPointer;
+}

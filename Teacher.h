@@ -11,6 +11,7 @@
 
 class Worker;
 class Person;
+class Class;
 
 class Teacher: public virtual Worker {
 
@@ -19,8 +20,6 @@ protected:
     int num_subj;
 
 public:
-    //Teacher();
-    //Worker(const Worker& obj);
     Teacher(const Teacher& other);
     Teacher( std::string frt_name, std::string lst_name, vector<string> study_sbj, int num_subj,double tch_exp_time);
     double Get_Sallary();
@@ -28,6 +27,7 @@ public:
     void Print_Subjects();
     void Print_Details();
     virtual ~Teacher();
+    virtual Class* Get_Class();
     vector<string> Get_sturdy_sbj();
 };
 #endif
