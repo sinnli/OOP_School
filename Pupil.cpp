@@ -80,7 +80,7 @@ char Pupil::getLayer()const {
 int Pupil::getClassnum()const{
     return this->numClass;
 }
-void Pupil::Get_Max() {
-    this->gradeaverage();
-    return;
+double Pupil::Get_Max() {
+    double grade = this->gradeaverage();
+    return grade;
 }

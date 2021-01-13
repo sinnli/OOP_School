@@ -113,6 +113,7 @@ public:
             cout<<"There are no people in this vector"<<endl;
             return;
         }
+        this->max();
         return;
     };
     //prints the objects with max value(for students ->highest average

@@ -52,9 +52,9 @@ void Worker::Set_TchExp_Time(double tch_time) {
 void Worker::Print_Details(){
     return;
 }
-void Worker::Get_Max() {
-    this->Get_Sallary();
-    return;
+double Worker::Get_Max() {
+    double salary = this->Get_Sallary();
+    return salary;
 }
 
 

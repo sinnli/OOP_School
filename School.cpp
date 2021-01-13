@@ -53,7 +53,7 @@ School::~School() {
     for (int i = 0; i < this->PointPupil.size(); ++i) {
         delete this->PointPupil[i];
     }
-    delete oneSchool;
+    delete[] oneSchool;
 }
 
 void School::menu() {
@@ -371,7 +371,7 @@ Manager* School::creatingManager() {
     this->numOFManager = 1; //only a single manager can be created
     Manager *m = m->Get_Manager();
 
-    cout<<"Please enter the first name of the secretary:"<<endl;
+    cout<<"Please enter the first name of the manager:"<<endl;
     string frs_name;
     cin >> frs_name;
     while (cin.fail()) {
@@ -380,7 +380,7 @@ Manager* School::creatingManager() {
         cin.ignore(256, '\n');
         cin >> frs_name;
     }
-    cout<<"Please enter the last name of the secretary:"<<endl;
+    cout<<"Please enter the last name of the manager:"<<endl;
     string lst_name;
     cin >> lst_name;
     while (cin.fail()) {

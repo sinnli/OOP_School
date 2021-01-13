@@ -35,7 +35,7 @@ public:
 	virtual void Print_Details();
     double Get_TchExp_Time();
     double Get_MngExp_Time();
-	virtual void Get_Max();
+	virtual double Get_Max();
     void Set_MngExp_Time(double mng_time);
     void Set_TchExp_Time(double tch_time);
     virtual Class* Get_Class();
