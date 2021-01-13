@@ -29,6 +29,7 @@ class School{
     vector<Pupil*> PointPupil;
     vector<Worker*> PointWorker;
     static School* oneSchool;//must be private
+    static void ResetoneSchool();
     School(int numLayer, vector<Layer*> layer, vector<Pupil*> pupil,vector<Worker*> worker); //must be private
     School();
 protected:

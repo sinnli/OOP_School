@@ -39,7 +39,10 @@ School::School(int numLayer, vector<Layer *> layer, vector<Pupil *> pupil, vecto
     this->PointWorker = worker;
     this->numOfLayers = numLayer;
 }
-
+void School::ResetoneSchool() {
+    delete oneSchool; // REM : it works even if the pointer is NULL (does nothing then)
+    oneSchool = NULL; // so GetInstance will still work.
+}
 School::~School() {
     for (int i = 0; i < this->PointLayers.size(); ++i) {
         for (int j = 0;j<this->PointLayers[i]->getClassOfLayer().size();j++){
@@ -53,7 +56,7 @@ School::~School() {
     for (int i = 0; i < this->PointPupil.size(); ++i) {
         delete this->PointPupil[i];
     }
-    delete[] oneSchool;
+    this->ResetoneSchool();
 }
 
 void School::menu() {
