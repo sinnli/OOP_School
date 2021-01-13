@@ -1,7 +1,8 @@
-//
-// Created by liel on 10/01/2021.
-//
-
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+//not to submit
 #include "VecAnalyser.h"
 #include "Person.h"
 #include <iostream>

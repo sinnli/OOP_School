@@ -1,3 +1,10 @@
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+
+
+
 #ifndef SECRETARY_H
 #define SECRETARY_H
 #include "AdministrationPersonal.h"
@@ -11,7 +18,6 @@ private:
 	int num_of_kids; 
 
 public:
-	//Secretary();
 	Secretary(std::string frt_name, std::string lst_name, string office_plc, double mng_exp_time, int num_of_kids);
 	virtual ~Secretary();
 	double Get_Sallary();

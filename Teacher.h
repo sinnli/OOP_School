@@ -1,3 +1,8 @@
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+
 #ifndef UNTITLED_TEACHER_H
 #define UNTITLED_TEACHER_H
 
@@ -28,6 +33,6 @@ public:
     void Print_Details();
     virtual ~Teacher();
     virtual Class* Get_Class();
-    vector<string> Get_sturdy_sbj();
+    vector<string> Get_sturdy_sbj(); //is a virutal method
 };
 #endif

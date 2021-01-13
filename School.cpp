@@ -1,6 +1,8 @@
-//
-// Created by liel on 03/01/2021.
-//
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+
 #include <iostream>
 #include "School.h"
 #include "Worker.h"
@@ -205,15 +207,6 @@ Pupil* School::creatingPupil(){
     return newPupil;
 }
 
-Pupil* School::pupilExistAlready(int pupilIndex,Pupil* pPupil) {
-    while (pupilIndex == -1){
-        cout<<"Try again this pupil already exist."<<endl;
-        pPupil = this->creatingPupil();
-        pupilIndex = this->lookForWorker(pPupil->getPerson_FirstName(),pPupil->getPerson_LastName());
-        //checks if this pupil exist already
-    }
-    return pPupil;
-}
 
 int  School::lookForLayer(char letterLayer) {
     for (int i=0; i<this->PointLayers.size();i++){
@@ -470,7 +463,7 @@ void School::printClassOfTutor() {
     }
     cout<<"The class of the tutor is in class number: "<< this->PointWorker[workerIndex]->Get_Class()->Get_numOfClass()
     <<"\n and the class is in layer is: "<<this->PointWorker[workerIndex]->Get_Class()->Get_nameOfLayer()<<endl;
-    cout<<"The class average is:"<<endl;
+   this->PointWorker[workerIndex]->Get_Class()->Print_Class_avg();
     //here class average
     cout<<"The pupils in class are:"<<endl;
     vector<Pupil*> puplOfClass = this->PointWorker[workerIndex]->Get_Class()->Get_PointToPupilInClass();
@@ -480,7 +473,7 @@ void School::printClassOfTutor() {
    cout<<"The outstanding pupils in class are:"<<endl;
     for (int i = 0; i < puplOfClass.size(); ++i) {
         if (puplOfClass[i]->Top_Person()==true){
-            puplOfClass[i]->Print_Details(); //printing each pupil of class with its details
+            puplOfClass[i]->printPeople(); //printing each pupil of class with its details
             //with or without details ?
         }
     }
@@ -545,38 +538,6 @@ string School::verify_string(string str) {
     }
     return  str;
 }
-Worker* School::creatingWorker(){ //every worker needs to begin with this creation
-    cout<<"Please enter the first name of the teacher:"<<endl;
-    string frs_name;
-    cin >> frs_name;
-    while (cin.fail()) {
-        cout << "Error! Please enter a string:" << std::endl;
-        cin.clear();
-        cin.ignore(256, '\n');
-        cin >> frs_name;
-    }
-    cout<<"Please enter the last name of the teacher:"<<endl;
-    string lst_name;
-    cin >> lst_name;
-    while (cin.fail()) {
-        cout << "Error! Please enter a string:" << std::endl;
-        cin.clear();
-        cin.ignore(256, '\n');
-        cin >> frs_name;
-    }
-    Worker* w =  new Worker(frs_name,lst_name,0,0);
-    return w;
-}
-
-Worker* School::workerExistAlready(int workerIndex,Worker* pw) {
-    while (workerIndex == -1){
-        cout<<"Try again this worker already exist."<<endl;
-        pw = this->creatingWorker();
-        workerIndex = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
-        //checks if this worker exist already
-    }
-    return pw;
-}
 
 vector<string> School::creatingStudy_Sbj() {
     cout<<"Please enter in the subject the Teacher is teaching(at least one):\n"
@@ -599,39 +560,8 @@ vector<string> School::creatingStudy_Sbj() {
 }
 
 
-
-//for turor creation good
-//ask the user to add Teacher as educator(Tutor)
-// Worker *w = this->creatingWorker();
-//int indexWorker  = this->lookForWorker(w->getPerson_FirstName(),w->getPerson_LastName());
-//w = this->workerExistAlready(indexWorker,w); //checks if worker already exists
-// vector<string> study_sbj = this->creatingStudy_Sbj();
-// Tutor tutorOfNewClass = Tutor(w->getPerson_FirstName(),w->getPerson_LastName(),
-//    study_sbj,study_sbj.size(),w->Get_Exp_Time(),layerLet,
-//   pnewP->getClassnum()); //new tutor created (ther is new in the ctor)
-//Tutor* ptutorOfNewClass = &tutorOfNewClass;
-
-
-
-//for old tutor
-//using the ctor of tutor for existing class
-// Class* theExistingClass = this->PointLayers[layerIndex]->getClass(classNum);
-//change current turor to teacher
-//Tutor* existingTutor = theExistingClass->Get_Tutor();
-//Teacher convTutorToTeacher = Teacher(existingTutor->getPerson_FirstName(),existingTutor->getPerson_LastName(),
-// existingTutor->Get_sturdy_sbj(),existingTutor->Get_sturdy_sbj().size(),
-// existingTutor->Get_Exp_Time());
-//Teacher* pTe = &convTutorToTeacher;
-//needs to be deleted and
-
 int main(){
-    string F_n = "Israel",f2 = "hello",f3="alisa",f4 = "Inona",f6 = "Smith";
-    string L_n = "Levi";
-    string F_n1 = "Israeli";
-    string L_n1 = "Levli";
-    string sub[15] = {"a"};
-    vector<int> gra = {100,75,90,100},gr1 = {56,100,100,100};
-    vector<Pupil*> Ppupil;
+
     School *s = s->theOneSchool();
     s->menu();
     return 0;

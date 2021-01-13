@@ -1,7 +1,7 @@
-//
-// Created by liel on 03/01/2021.
-//
-
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 #include "Pupil.h"
 #include "Person.h"
 #include "Class.h"
@@ -84,23 +84,3 @@ void Pupil::Get_Max() {
     this->gradeaverage();
     return;
 }
-
-  /*  Teacher t1  = Teacher(F_n1,L_n1,sub,15,12.30);
-    Teacher *Pt1;
-    Pt1 = &t1;
-    Class C1('a',0,Ppupil,30,Pt1);
-    Pupil p2 = Pupil(f2,f3,'a',1,gr1,C1);
-    Pupil p1= Pupil(F_n,L_n,'a',1,gra,C1);
-    p1.Top_Person();
-    p1.gradeaverage();
-    //p1.Print_Details();
-    //p2.Print_Details();
-    Pupil *Pp1,*Pp2;
-    Pp1 = &p1;
-    Pp2 = &p2;
-    C1 += Pp1;
-    C1 += Pp2;
-    C1[0].Print_Details();
-    C1[1].Print_Details();
-
-*/

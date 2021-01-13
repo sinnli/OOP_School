@@ -1,7 +1,13 @@
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+
+
+
 #include "Worker.h"
 #include "Class.h"
 
-//Worker::Worker() :tch_exp_time(-1) ,mng_exp_time(-1){}        // defualt Ctor
 Worker::Worker(const Worker &obj):Person(obj.first_name, obj.last_name) {
     this->tch_exp_time = obj.tch_exp_time;
     this->mng_exp_time = obj.mng_exp_time;

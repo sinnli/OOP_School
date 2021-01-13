@@ -1,6 +1,7 @@
-//
-// Created by liel on 03/01/2021.
-//
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 
 #include "Layer.h"
 #include <vector>
@@ -35,13 +36,6 @@ Layer::~Layer() {
     cout<<"deleting Layer"<<endl;
 }
 
-void Layer::setLayerVec(Class *PClass) {
-    if (lookForClass(PClass)){
-        this->classesOfLayerPointer.push_back(PClass); //adds only if does not exist
-    }
-    return;
-}
-
 bool Layer::lookForClass(Class* PClass){
     for (int i=0; i<this->classesOfLayerPointer.size();i++){
         if(this->classesOfLayerPointer[i]==PClass){
@@ -50,7 +44,7 @@ bool Layer::lookForClass(Class* PClass){
     }
     return false;
 }
-//maybe no need
+
 bool Layer::lookForClass(int classNum){
     for (int i=0; i<this->classesOfLayerPointer.size();i++){
         if(this->classesOfLayerPointer[i]->Get_numOfClass()==classNum){

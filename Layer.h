@@ -1,6 +1,7 @@
-//
-// Created by liel on 03/01/2021.
-//
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 
 #ifndef UNTITLED_LAYER_H
 #define UNTITLED_LAYER_H
@@ -14,14 +15,11 @@ class Class;
 class Layer{
     char nameLayer;
     vector<Class*> classesOfLayerPointer; //use of composition
-    //not sure if counts as Class**
-    //the vector can at most 3 pointers
 public:
     Layer(); //default c-tor
     Layer(char nameLayer,const vector<Class*> classesInLayer);
     virtual ~Layer();
     Class &operator[]( int i )const; //getting class at given index of the vector
-    void setLayerVec(Class* PClass); //adds class to layer
     bool lookForClass(Class* PClass); //looks for class in vector by given class*
     bool lookForClass(int classNum); //looks for class in vector by given classnum
     char getLayer();

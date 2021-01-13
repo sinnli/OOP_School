@@ -1,14 +1,13 @@
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
+
+
 #include "Teacher.h"
 #include "Worker.h"
-#include "Person.h"
 #include "Class.h"
 
-/*
-Teacher::Teacher(){
-    this->study_sbj;
-    this->num_subj = 0;
-}
-*/
 Teacher::Teacher(const Teacher &other) :
         Worker(other.first_name,other.last_name,other.tch_exp_time,0){
     this->num_subj = other.num_subj;

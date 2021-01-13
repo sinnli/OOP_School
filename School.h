@@ -1,6 +1,7 @@
-//
-// Created by liel on 03/01/2021.
-//
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 
 #ifndef UNTITLED_SCHOOL_H
 #define UNTITLED_SCHOOL_H
@@ -30,8 +31,6 @@ class School{
     static School* oneSchool;//must be private
     School(int numLayer, vector<Layer*> layer, vector<Pupil*> pupil,vector<Worker*> worker); //must be private
     School();
-    School(const School&);//private copy ctor
-    School& operator=(const School&);//private assigment operator
 protected:
 public:
     ~School();
@@ -54,16 +53,8 @@ public:
     int verify_int(int num);
     int verify_classNum(int classNum);
     string verify_string(string str);
-    //int creatingWorker();
-    Worker* creatingWorker();
-    Worker* workerExistAlready(int workerIndex,Worker* pw);
-    Pupil* pupilExistAlready(int pupilIndex,Pupil* pPupil);
     char verify_layLetter(char layLetter);
     vector<string> creatingStudy_Sbj();
-
-
-    //creatingManager(); //use int num of Manager
-
 };
 
 #endif //UNTITLED_SCHOOL_H

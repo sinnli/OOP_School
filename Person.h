@@ -1,4 +1,7 @@
-
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 
 #ifndef PERSON_H
 #define PERSON_H
@@ -18,7 +21,6 @@ protected:
 	bool top_person;
 
 public:
-	//Person();
 	Person(const string frt_name, const string lst_name);
 	Person(const Person& obj);
 	string getPerson_FirstName() const;

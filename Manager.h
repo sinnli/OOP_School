@@ -1,6 +1,7 @@
-//
-// Created by liel on 12/01/2021.
-//
+/* Assignment: 3
+Author: Itay Mizikov, ID: 315541615
+Author: Liel Sinn, ID: 209195155
+ */
 
 #ifndef UNTITLED_MANAGER_H
 #define UNTITLED_MANAGER_H
