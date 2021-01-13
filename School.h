@@ -17,6 +17,7 @@ class Teacher;
 class Class;
 class Tutor;
 class Secretary;
+class Manager;
 template <typename T>
 class VecAnalyser;
 
@@ -47,6 +48,7 @@ public:
     Pupil* creatingPupil();
     Teacher* creatingTeacher();
     Secretary* creatingSecretary();
+    Manager* creatingManager();
     void printClassOfTutor();
     double verify_double(double num);
     int verify_int(int num);
@@ -58,8 +60,6 @@ public:
     Pupil* pupilExistAlready(int pupilIndex,Pupil* pPupil);
     char verify_layLetter(char layLetter);
     vector<string> creatingStudy_Sbj();
-
-
 
 
     //creatingManager(); //use int num of Manager

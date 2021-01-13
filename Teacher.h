@@ -19,7 +19,9 @@ protected:
     int num_subj;
 
 public:
-    Teacher();
+    //Teacher();
+    //Worker(const Worker& obj);
+    Teacher(const Teacher& other);
     Teacher( std::string frt_name, std::string lst_name, vector<string> study_sbj, int num_subj,double tch_exp_time);
     double Get_Sallary();
     bool Top_Person();

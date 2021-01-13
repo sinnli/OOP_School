@@ -18,7 +18,7 @@ protected:
 	bool top_person;
 
 public:
-	Person();
+	//Person();
 	Person(const string frt_name, const string lst_name);
 	Person(const Person& obj);
 	string getPerson_FirstName() const;

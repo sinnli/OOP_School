@@ -15,15 +15,15 @@ using namespace std;
 class Worker : public Person {
 
 private :
-	double tch_exp_time;
-    double mng_exp_time;
+
 
 protected:
 	int basis;
+    double tch_exp_time=0;
+    double mng_exp_time=0;
 
 public:
-	Worker();
-    Worker(string frt_name , string lst_name ,double tch_exp_time);
+
 	Worker(string frt_name , string lst_name ,double tch_exp_time,double mng_exp_time);
 	Worker(const Worker& obj);
 	virtual double Get_Sallary();     // pure virtual function  // returns the sallary of the worker

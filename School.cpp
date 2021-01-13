@@ -11,7 +11,7 @@
 #include "Tutor.h"
 #include "Secretary.h"
 #include "VecAnalyser.h"
-
+#include "Manager.h"
 
 using namespace std;
 
@@ -84,10 +84,15 @@ void School::menu() {
             this->creatingTutor();
         }
         if (state == 4) {          // adds manager
-
+            if(this->numOFManager == 0){
+                this->creatingManager();
+            }
+            else{
+                cout<<"Error! You can add only a single manger."<<endl;
+            }
         }
         if (state == 5) { //adds new secretary
-           // creatingSecretary(); //is also added to workers pointer vector of school
+            creatingSecretary(); //is also added to workers pointer vector of school
         }
         if (state == 6){//prints person details
             cout<<"All people at school with their details:"<<endl;
@@ -160,7 +165,6 @@ Pupil* School::creatingPupil(){
     cout<<"Please enter the grades of the Student. (After each grade press enter.) \n"
           "To stop please enter 101.\n"
           "All the grades are between 0 and 100."<<endl;
-    //checkeeeee
     vector<int> grades;
     int grd;
 
@@ -297,7 +301,7 @@ Tutor* School::creatingTutor() {
     cout<<"In what layer is the new tutor ->you can enter a char between 'a' and 'f':"<<endl;
     char layerLet = verify_layLetter(layerLet);
     cout<<"In what class number is the new tutor to be added ->you can enter a number beween 1 and 3:"<<endl;
-    int classNum = verify_int(classNum);
+    int classNum = verify_classNum(classNum);
     Worker* pw = this->creatingWorker(); //asking for first/last name
     cout<<"Please enter the of years of experience as Tutor:"<<endl;
     double tchExp_time = verify_double(tchExp_time);
@@ -335,27 +339,87 @@ Tutor* School::creatingTutor() {
         this->newLayerAdd_tutor(newTutor,layerLet,classNum);
     }
     this->PointWorker.push_back(newTutor);  //is also added to workers pointer vector of school
+    delete pw; //check if this works with the name..
     return newTutor;
 }
+Manager* School::creatingManager() {
+    this->numOFManager = 1; //only a single manager can be created
+    Manager *m = m->Get_Manager();
 
-/*
-Secretary* School::creatingSecretary() {
-    //Worker* pw = creatingWorker();
-    int indexWorker  = this->lookForWorker(pw->getPerson_FirstName(),pw->getPerson_LastName());
-    pw = this->workerExistAlready(indexWorker,pw); //checks if worker already exists
+    cout<<"Please enter the first name of the secretary:"<<endl;
+    string frs_name;
+    cin >> frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    cout<<"Please enter the last name of the secretary:"<<endl;
+    string lst_name;
+    cin >> lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> lst_name;
+    }
+    int indexWorker  = this->lookForWorker(frs_name,lst_name);
+    while (indexWorker!=-1){
+        cout<<"Error! This worker exists already.Try again:"<<endl;
+        this->creatingManager();
+    } //checkes if worker already exist
     cout<<"Please enter the number of his office place:"<<endl;
-    string office_plc = verify_string(office_plc);
+    int  Noffice_plc = verify_int(Noffice_plc);
+    string office_plc = to_string(Noffice_plc);
+    cout<<"Please enter the number of years of experience in administration:"<<endl;
+    double mng_exp_time = verify_double(mng_exp_time);
+    cout<<"Please enter the number of years of experience in teaching:"<<endl;
+    double tch_exp_time = verify_double(tch_exp_time);
+    vector<string> study_sbj = this->creatingStudy_Sbj(); //gets at least one subject to teach
+    //adding to vector of worker
+    this->PointWorker.push_back(m);
+    m->Set_Details(frs_name,lst_name,office_plc,mng_exp_time,study_sbj,tch_exp_time);
+    return m;
+}
+
+Secretary* School::creatingSecretary() {
+    cout<<"Please enter the first name of the secretary:"<<endl;
+    string frs_name;
+    cin >> frs_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> frs_name;
+    }
+    cout<<"Please enter the last name of the secretary:"<<endl;
+    string lst_name;
+    cin >> lst_name;
+    while (cin.fail()) {
+        cout << "Error! Please enter a string:" << std::endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> lst_name;
+    }
+    int indexWorker  = this->lookForWorker(frs_name,lst_name);
+    while (indexWorker!=-1){
+        cout<<"Error! This worker exists already.Try again:"<<endl;
+        this->creatingTutor();
+    } //checkes if worker already exist
+    cout<<"Please enter the number of his office place:"<<endl;
+    int  Noffice_plc = verify_int(Noffice_plc);
+    string office_plc = to_string(Noffice_plc);
     cout<<"Please enter the number of years the secretary is at his job:"<<endl;
     double mng_exp_time = verify_double(mng_exp_time);
     cout<<"Enter the number of your kids learning at this school:"<<endl;
     int num_of_kids = verify_int(num_of_kids);
-    Secretary sec = Secretary(pw->getPerson_FirstName(),pw->getPerson_LastName(),office_plc,mng_exp_time,num_of_kids);
-    Secretary* psec = &sec;
+    Secretary* sec = new Secretary(frs_name,lst_name,office_plc,mng_exp_time,num_of_kids);
     //adding to vector of workers
-    this->PointWorker.push_back(psec);
-    return psec;
+    this->PointWorker.push_back(sec);
+    return sec;
 }
-*/
+
 void School::printClassOfTutor() {
     cout<<"Please enter the first name of tutor of whom the pupil of class are to be printed:"<<endl;
     string frs_name = verify_string(frs_name);

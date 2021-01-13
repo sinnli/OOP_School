@@ -1,7 +1,7 @@
 #include "Person.h"
 
 
-Person::Person() :first_name("Israel"), last_name("Israeli"),top_person(false){}          // defualt Ctor
+//Person::Person() :first_name("Israel"), last_name("Israeli"),top_person(false){}          // defualt Ctor
 
 
 Person::Person(const string frt_name, const string lst_name) {       // Ctor to create person 

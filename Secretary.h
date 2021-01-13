@@ -11,7 +11,7 @@ private:
 	int num_of_kids; 
 
 public:
-	Secretary();
+	//Secretary();
 	Secretary(std::string frt_name, std::string lst_name, string office_plc, double mng_exp_time, int num_of_kids);
 	virtual ~Secretary();
 	double Get_Sallary();

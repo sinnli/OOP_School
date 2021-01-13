@@ -1,13 +1,13 @@
 #include "Secretary.h"
 #include <vector>
-
-Secretary::Secretary():AdministrationPersonal() {
+/*
+Secretary::Secretary():AdministrationPersonal(),Worker(first_name,last_name,0,mng_exp_time) {
 	this->num_of_kids = 0;
 }
-
+*/
 
 Secretary::Secretary(std::string frt_name, std::string lst_name, string office_plc, double mng_exp_time,
-	int num_of_kids) : AdministrationPersonal(frt_name, lst_name, office_plc, mng_exp_time) {
+	int num_of_kids) : AdministrationPersonal(frt_name, lst_name, office_plc, mng_exp_time),Worker(frt_name,lst_name,0,mng_exp_time) {
 
 	this->num_of_kids = num_of_kids;
 }

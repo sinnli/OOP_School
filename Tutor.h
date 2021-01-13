@@ -6,13 +6,13 @@
 #include "Teacher.h"
 #include <vector>
 
-class Tutor : public Teacher {       
+class Tutor : public virtual Teacher {
 
 private :
 	 Class* Class_m;
 
 public:
-    Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, Class* Class);
+    //Tutor(string frt_name, string lst_name, vector<string> study_sbj, int num_subj, double tch_exp_time, Class* Class);
     // class was created
 
 

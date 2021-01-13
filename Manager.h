@@ -29,7 +29,7 @@ public:
     bool Top_Person();
     void Print_Details();
     virtual ~Manager();
-
+    void Set_Details(string frt_name, string lst_name, string office_plc, double mng_exp_time, vector<string> study_sbj, double tch_exp_time);
 };
 #endif
 

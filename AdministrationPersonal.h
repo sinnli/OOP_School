@@ -9,7 +9,7 @@
 
 class AdministrationPersonal : virtual public Worker{
 
-private:
+protected:
 	string office_plc; 
 
 public:

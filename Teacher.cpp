@@ -2,15 +2,20 @@
 #include "Worker.h"
 #include "Person.h"
 
-
+/*
 Teacher::Teacher(){
     this->study_sbj;
     this->num_subj = 0;
 }
+*/
+Teacher::Teacher(const Teacher &other) :
+        Worker(other.first_name,other.last_name,other.tch_exp_time,0){
+    this->num_subj = other.num_subj;
+    this->study_sbj = other.study_sbj;
 
-
+}
 Teacher::Teacher( std::string frt_name,  std::string lst_name, vector<string> study_sbj, int num_subj,
-                 double tch_exp_time) : Worker(frt_name,lst_name,tch_exp_time)
+                 double tch_exp_time) : Worker(frt_name,lst_name,tch_exp_time,0)
                  {
 
     this->num_subj = num_subj;

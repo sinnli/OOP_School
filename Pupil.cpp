@@ -8,7 +8,8 @@
 #include <iostream>
 using namespace std;
 
-Pupil::Pupil(){ //default c-tor
+Pupil::Pupil():Person("hi","hi"){ //default c-tor
+
     this->arrayGrades; //empty Vector
     this->nameLayer; //default value
     this->numClass;
